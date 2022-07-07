@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewPostActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:text="@string/new_post" />
+
+        <Button
+            android:id="@+id/activity_new_post_btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="완료" /> <!-->이미지로 대체<-->
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/activity_new_post_et_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="@string/post_title" />
+
+    <EditText
+        android:id="@+id/activity_new_post_et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:gravity="left"
+        android:inputType="textLongMessage"
+        android:text="@string/post_content" />
+
+    <Button
+        android:id="@+id/activity_new_post_btn_atach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="첨부 파일" /> <!-->이미지로 대체<-->
+</LinearLayout>

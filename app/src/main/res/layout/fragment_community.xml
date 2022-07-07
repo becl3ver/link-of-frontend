@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.CommunityFragment">
+
+
+    <LinearLayout
+        android:id="@+id/fragment_community_ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/all_container_round_edge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- drawbleStart로 drawable 넣어보기 -->
+
+        <Button
+            android:id="@+id/fragment_community_btn_mypost"
+            android:background="@color/white"
+            android:text="@string/my_post"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+
+            android:drawableStart="@drawable/all_ic_boat_24"
+            android:drawablePadding="20dp" />
+
+        <Button
+            android:id="@+id/fragment_community_btn_bookmark"
+            android:background="@color/white"
+            android:text="@string/bookmark"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+
+            android:drawableStart="@drawable/all_ic_boat_24"
+            android:drawablePadding="20dp"/>
+
+        <Button
+            android:id="@+id/fragment_community_btn_temporary"
+            android:background="@color/white"
+            android:text="@string/temporary_post"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+
+            android:drawableStart="@drawable/all_ic_boat_24"
+            android:drawablePadding="20dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_community_ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/all_container_round_edge"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_community_ll1">
+
+        <Button
+            android:id="@+id/fragment_community_btn_notice"
+            android:background="@color/white"
+            android:text="@string/notice"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+
+            android:drawableStart="@drawable/all_ic_boat_24"
+            android:drawablePadding="20dp"/>
+
+        <Button
+            android:id="@+id/fragment_community_btn_popular"
+            android:background="@color/white"
+            android:text="@string/polular"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+
+            android:drawableStart="@drawable/all_ic_boat_24"
+            android:drawablePadding="20dp"/>
+
+        <Button
+            android:id="@+id/fragment_community_btn_free"
+            android:background="@color/white"
+            android:text="@string/free"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+
+            android:drawableStart="@drawable/all_ic_boat_24"
+            android:drawablePadding="20dp"/>
+
+        <Button
+            android:id="@+id/fragment_community_btn_qna"
+            android:text="@string/qna"
+            android:background="@color/white"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+
+            android:drawableStart="@drawable/all_ic_boat_24"
+            android:drawablePadding="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_community_ll3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/all_container_round_edge"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_community_ll2">
+
+        <Button
+            android:id="@+id/fragment_community_btn_community1"
+            android:text="기타1"
+            android:background="@color/white"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+
+            android:drawableStart="@drawable/all_ic_boat_24"
+            android:drawablePadding="20dp"/>
+
+        <Button
+            android:id="@+id/fragment_community_btn_community2"
+            android:text="기타2"
+            android:background="@color/white"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+
+            android:drawableStart="@drawable/all_ic_boat_24"
+            android:drawablePadding="20dp"/>
+
+        <Button
+            android:id="@+id/fragment_community_btn_community3"
+            android:text="기타3"
+            android:background="@color/white"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+
+            android:drawableStart="@drawable/all_ic_boat_24"
+            android:drawablePadding="20dp"/>
+
+        <Button
+            android:id="@+id/fragment_community_btn_community4"
+            android:text="기타4"
+            android:background="@color/white"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+
+            android:drawableStart="@drawable/all_ic_boat_24"
+            android:drawablePadding="20dp"/>
+
+        <Button
+            android:id="@+id/fragment_community_btn_community5"
+            android:text="기타5"
+            android:background="@color/white"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+
+            android:drawableStart="@drawable/all_ic_boat_24"
+            android:drawablePadding="20dp"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

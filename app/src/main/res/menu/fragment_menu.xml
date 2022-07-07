@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/select_main_screen"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="Estimate"
+        />
+
+    <item
+        android:id="@+id/select_terms"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="Tracking"
+        />
+
+    <item
+        android:id="@+id/select_community"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="Community"
+        />
+
+    <item
+        android:id="@+id/select_account"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="MyPage"
+        />
+</menu>
