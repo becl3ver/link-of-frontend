@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.logisticsestimate.data.BoardData
 import com.example.logisticsestimate.databinding.ItemPostBinding
 
-class PostRecyclerViewAdapter(private val posts : ArrayList<BoardData>)
-    :RecyclerView.Adapter<PostRecyclerViewAdapter.MyViewHolder>() {
+class BoardRecyclerViewAdapter(private val posts : ArrayList<BoardData>)
+    :RecyclerView.Adapter<BoardRecyclerViewAdapter.MyViewHolder>() {
     inner class MyViewHolder(binding: ItemPostBinding) : RecyclerView.ViewHolder(binding.root) {
         val itemPostTvTitle = binding.itemPostTvTitle
         val itemPostTvNickname = binding.itemPostTvNickname

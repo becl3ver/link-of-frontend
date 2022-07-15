@@ -7,220 +7,194 @@
     android:layout_height="match_parent"
     tools:context=".fragment.CommunityFragment">
 
+    <TextView
+        android:id="@+id/fragment_community_tv_convenience"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="편의 기능"
+        android:textColor="?colorPrimary"
+        android:textStyle="bold"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <LinearLayout
-        android:id="@+id/fragment_community_ll1"
+        android:id="@+id/fragment_community_container1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:orientation="vertical"
         android:background="@drawable/all_container_round_edge"
+        android:elevation="10dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/fragment_community_tv_convenience">
 
-        <!-- drawbleStart로 drawable 넣어보기 -->
-
-        <Button
-            android:id="@+id/fragment_community_btn_mypost"
-            android:background="@color/white"
-            android:text="@string/my_post"
-
+        <LinearLayout
+            android:id="@+id/fragment_community_btn_cbm"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="2dp"
+            android:background="#00ff0000"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:gravity="center_vertical">
 
-            android:drawableStart="@drawable/all_ic_boat_24"
-            android:drawablePadding="20dp" />
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/all_ic_boat_24"
+                app:tint="@color/main_blue" />
 
-        <Button
-            android:id="@+id/fragment_community_btn_bookmark"
-            android:background="@color/white"
-            android:text="@string/bookmark"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="CBM 계산기"
+                android:textColor="@color/main_blue"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/fragment_community_btn_dictionary"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="2dp"
+            android:background="#00ff0000"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:gravity="center_vertical">
 
-            android:drawableStart="@drawable/all_ic_boat_24"
-            android:drawablePadding="20dp"/>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/all_ic_boat_24"
+                app:tint="@color/main_blue" />
 
-        <Button
-            android:id="@+id/fragment_community_btn_temporary"
-            android:background="@color/white"
-            android:text="@string/temporary_post"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-
-            android:drawableStart="@drawable/all_ic_boat_24"
-            android:drawablePadding="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="용어 사전"
+                android:textColor="@color/main_blue"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/fragment_community_tv_board_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/community"
+        android:textColor="?colorPrimary"
+        android:textStyle="bold"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintTop_toBottomOf="@id/fragment_community_container1"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <LinearLayout
-        android:id="@+id/fragment_community_ll2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/all_container_round_edge"
+        android:elevation="10dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_community_ll1">
+        app:layout_constraintTop_toBottomOf="@id/fragment_community_tv_board_list">
 
-        <Button
+        <LinearLayout
             android:id="@+id/fragment_community_btn_notice"
-            android:background="@color/white"
-            android:text="@string/notice"
-
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="2dp"
+            android:background="#00ff0000"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:gravity="center_vertical">
 
-            android:drawableStart="@drawable/all_ic_boat_24"
-            android:drawablePadding="20dp"/>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/all_ic_boat_24"
+                app:tint="@color/main_blue" />
 
-        <Button
-            android:id="@+id/fragment_community_btn_popular"
-            android:background="@color/white"
-            android:text="@string/polular"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/notice"
+                android:textColor="@color/main_blue"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
 
-            android:drawableStart="@drawable/all_ic_boat_24"
-            android:drawablePadding="20dp"/>
-
-        <Button
-            android:id="@+id/fragment_community_btn_free"
-            android:background="@color/white"
-            android:text="@string/free"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-
-            android:drawableStart="@drawable/all_ic_boat_24"
-            android:drawablePadding="20dp"/>
-
-        <Button
+        <LinearLayout
             android:id="@+id/fragment_community_btn_qna"
-            android:text="@string/qna"
-            android:background="@color/white"
-
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="2dp"
+            android:background="#00ff0000"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:gravity="center_vertical">
 
-            android:drawableStart="@drawable/all_ic_boat_24"
-            android:drawablePadding="20dp"/>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/all_ic_boat_24"
+                app:tint="@color/main_blue" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/qna"
+                android:textColor="@color/main_blue"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment_community_btn_free"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="2dp"
+            android:background="#00ff0000"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/all_ic_boat_24"
+                app:tint="@color/main_blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/free"
+                android:textColor="@color/main_blue"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/fragment_community_ll3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/all_container_round_edge"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_community_ll2">
-
-        <Button
-            android:id="@+id/fragment_community_btn_community1"
-            android:text="기타1"
-            android:background="@color/white"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-
-            android:drawableStart="@drawable/all_ic_boat_24"
-            android:drawablePadding="20dp"/>
-
-        <Button
-            android:id="@+id/fragment_community_btn_community2"
-            android:text="기타2"
-            android:background="@color/white"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-
-            android:drawableStart="@drawable/all_ic_boat_24"
-            android:drawablePadding="20dp"/>
-
-        <Button
-            android:id="@+id/fragment_community_btn_community3"
-            android:text="기타3"
-            android:background="@color/white"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-
-            android:drawableStart="@drawable/all_ic_boat_24"
-            android:drawablePadding="20dp"/>
-
-        <Button
-            android:id="@+id/fragment_community_btn_community4"
-            android:text="기타4"
-            android:background="@color/white"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-
-            android:drawableStart="@drawable/all_ic_boat_24"
-            android:drawablePadding="20dp"/>
-
-        <Button
-            android:id="@+id/fragment_community_btn_community5"
-            android:text="기타5"
-            android:background="@color/white"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-
-            android:drawableStart="@drawable/all_ic_boat_24"
-            android:drawablePadding="20dp"/>
-
-    </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

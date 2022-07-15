@@ -4,10 +4,10 @@
     package="com.example.logisticsestimate">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".App"
-        android:value="${GOOGLE_MAP_API_KEY}"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,8 +16,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LogisticsEstimate"
-
         tools:targetApi="31">
+        <activity
+            android:name=".TermActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${GOOGLE_MAP_API_KEY}" />
+
+        <activity
+            android:name=".ShipSearchActivity"
+            android:exported="false" />
         <activity
             android:name=".MyInfoActivity"
             android:exported="false" />

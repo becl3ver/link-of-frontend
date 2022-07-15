@@ -9,6 +9,6 @@
 
     <item android:id="@+id/menu_search"
         android:title="@string/search"
-        android:icon="@drawable/activity_post_list_ic_search_24"
+        android:icon="@drawable/all_ic_search_24"
         app:showAsAction="always"/>
 </menu>

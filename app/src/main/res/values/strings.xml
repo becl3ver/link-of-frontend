@@ -6,8 +6,8 @@
     <string name="post_title">제목</string>
     <string name="post_content">내용을 입력하세요.</string>
     <string name="new_post">새 글 작성하기</string>
-    <string name="notice">공지</string>
-    <string name="comminity">커뮤니티</string>
+    <string name="notice">공지사항</string>
+    <string name="community">커뮤니티</string>
     <string name="refresh">새로고침</string>
     <string name="search">검색</string>
     <string name="date">날짜</string>
@@ -18,7 +18,7 @@
     <string name="temporary_post">임시 저장 글</string>
     <string name="free">자유</string>
     <string name="qna">Q&amp;A</string>
-    <string name="polular">인기</string>
+    <string name="popular">인기</string>
 
     <string name="sign_in">로그인</string>
     <string name="sign_out">로그아웃</string>
@@ -33,6 +33,7 @@
     <string name="password_check">비밀번호 확인</string>
     <string name="duplication_check">중복 확인</string>
     <string name="nickname">별명</string>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

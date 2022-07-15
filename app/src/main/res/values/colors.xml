@@ -11,4 +11,5 @@
     <color name="green">#008000</color>
     <color name="main_blue">#12196C</color>
     <color name="secondary_blue">#000555</color>
+    <color name="translucent_blue">#8012196C</color>
 </resources>

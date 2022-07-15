@@ -61,18 +61,19 @@ class MyPageFragment : Fragment() {
         }
 
         binding.fragmentMyPageBtn2.setOnClickListener {
-            AlertDialog.Builder(requireActivity())
-                .setMessage("로그아웃 하시겠습니까?")
-                .setPositiveButton("네", DialogInterface.OnClickListener { _, _ ->
+            AlertDialog.Builder(requireActivity()).let {
+                it.setMessage("로그아웃 하시겠습니까?")
+                it.setPositiveButton("네", DialogInterface.OnClickListener { _, _ ->
                     setBtnSignedOut()
                     App.prefs.removeAccessToken()
                     Toast.makeText(context, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
                 })
-                .setNegativeButton("아니오", DialogInterface.OnClickListener { _, _ ->
+                it.setNegativeButton("아니오", DialogInterface.OnClickListener { _, _ ->
                     return@OnClickListener
                 })
-                .create()
-                .show()
+                it.create()
+                it.show()
+            }
         }
     }
 
