@@ -18,7 +18,7 @@
         android:theme="@style/Theme.LogisticsEstimate"
         tools:targetApi="31">
         <activity
-            android:name=".TermActivity"
+            android:name=".TermsActivity"
             android:exported="false" />
 
         <meta-data

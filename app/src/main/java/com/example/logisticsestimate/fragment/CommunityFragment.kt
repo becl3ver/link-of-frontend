@@ -2,12 +2,14 @@ package com.example.logisticsestimate.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.logisticsestimate.BoardListActivity
-import com.example.logisticsestimate.TermActivity
+import com.example.logisticsestimate.TemporaryPostActivity
+import com.example.logisticsestimate.TermsActivity
 import com.example.logisticsestimate.databinding.FragmentCommunityBinding
 
 /**
@@ -17,6 +19,7 @@ import com.example.logisticsestimate.databinding.FragmentCommunityBinding
  * @version
  */
 class CommunityFragment : Fragment(), View.OnClickListener {
+    private val TAG = CommunityFragment::class.java.name
     private var _binding : FragmentCommunityBinding? = null
     private val binding get() = _binding!!
 
@@ -27,6 +30,14 @@ class CommunityFragment : Fragment(), View.OnClickListener {
     ): View? {
         _binding = FragmentCommunityBinding.inflate(inflater, container, false)
 
+        binding.fragmentCommunityBtnCbm.setOnClickListener(this)
+        binding.fragmentCommunityBtnDictionary.setOnClickListener(this)
+
+        binding.fragmentCommunityBtnTemporary.setOnClickListener(this)
+        binding.fragmentCommunityBtnNotice.setOnClickListener(this)
+        binding.fragmentCommunityBtnFree.setOnClickListener(this)
+        binding.fragmentCommunityBtnQna.setOnClickListener(this)
+
         return binding.root
     }
 
@@ -35,23 +46,23 @@ class CommunityFragment : Fragment(), View.OnClickListener {
         _binding = null
     }
 
-    override fun onClick(v: View?) {
-        when(v) {
-            binding.fragmentCommunityBtnDictionary -> {
-                val intent = Intent(context, TermActivity::class.java)
-                startActivity(intent)
-            }
+    override fun onClick(p0: View?) {
+        when(p0?.id) {
+            binding.fragmentCommunityBtnCbm.id -> {}
+            binding.fragmentCommunityBtnDictionary.id -> startActivity(Intent(context, TermsActivity::class.java))
 
-            binding.fragmentCommunityBtnNotice -> loadBoardList(0)
-            binding.fragmentCommunityBtnQna -> loadBoardList(1)
-            binding.fragmentCommunityBtnFree -> loadBoardList(2)
+            binding.fragmentCommunityBtnTemporary.id -> startActivity(Intent(context, TemporaryPostActivity::class.java))
+
+            binding.fragmentCommunityBtnNotice.id -> loadBoardList(0)
+            binding.fragmentCommunityBtnQna.id -> loadBoardList(1)
+            binding.fragmentCommunityBtnFree.id -> loadBoardList(2)
+
+            else -> Log.d(TAG, "Failed to find onClick()")
         }
     }
 
     private fun loadBoardList(idx : Int) {
-        val intent = Intent(context, BoardListActivity::class.java)
-        intent.putExtra("category", idx)
-        startActivity(intent)
+        startActivity(Intent(context, BoardListActivity::class.java).let { it.putExtra("category", idx) })
     }
 
     companion object {

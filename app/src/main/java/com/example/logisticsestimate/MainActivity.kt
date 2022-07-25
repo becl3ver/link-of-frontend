@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             var nowFragment = when(item.itemId) {
                 R.id.select_main_screen -> mainScreenFragment
                 R.id.select_terms -> termsFragment
-                R.id.select_community -> testFragment //communityFragment
+                R.id.select_community -> communityFragment //communityFragment
                 R.id.select_account -> myPageFragment
                 else -> mainScreenFragment
             }

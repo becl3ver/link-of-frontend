@@ -12,11 +12,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
+        <EditText
+            android:id="@+id/activity_new_post_et_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:text="@string/new_post" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:hint="@string/post_title"
+            android:layout_weight="3"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/activity_new_post_btn_submit"
@@ -28,15 +34,6 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/activity_new_post_et_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="@string/post_title" />
-
-    <EditText
         android:id="@+id/activity_new_post_et_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +41,9 @@
         android:ems="10"
         android:gravity="left"
         android:inputType="textLongMessage"
-        android:text="@string/post_content" />
+        android:hint="@string/post_content"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/activity_new_post_btn_atach"
