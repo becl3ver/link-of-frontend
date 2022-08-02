@@ -20,8 +20,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 /**
- * @author 최재훈
- * @version
+ * ShipSearchActivity 통해서 선박 위치를 조회하고, 구글 맵 API를 이용해서 해당 위치를 표시한다.
  */
 class TrackingFragment : Fragment(), OnMapReadyCallback {
     private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result->

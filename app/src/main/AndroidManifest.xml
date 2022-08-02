@@ -18,13 +18,16 @@
         android:theme="@style/Theme.LogisticsEstimate"
         tools:targetApi="31">
         <activity
-            android:name=".TermsActivity"
+            android:name=".BoardViewActivity"
             android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${GOOGLE_MAP_API_KEY}" />
 
+        <activity
+            android:name=".TermActivity"
+            android:exported="false" />
         <activity
             android:name=".ShipSearchActivity"
             android:exported="false" />
@@ -47,7 +50,7 @@
             android:name=".BoardListActivity"
             android:exported="false" />
         <activity
-            android:name=".TemporaryPostActivity"
+            android:name=".TemporaryBoardActivity"
             android:exported="false" />
         <activity
             android:name=".LoadingActivity"

@@ -1,18 +1,17 @@
 package com.example.logisticsestimate.db
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
+import androidx.room.OnConflictStrategy.REPLACE
 
 @Dao
 interface TermDao {
-    @Query("SELECT * FROM TermEntity WHERE category LIKE :string")
-    fun loadAllMatchedTerms(string: String) : Array<TermEntity>
 
-    @Insert
-    fun insertTerms(termEntity: TermEntity)
+    @Query("SELECT * FROM TermEntity WHERE name LIKE '%' || :query || '%'")
+    fun getQueryTerms(query: String) : List<TermEntity>
 
-    @Delete
-    fun deleteTerms(termEntity: TermEntity)
+    @Query("SELECT * FROM TermEntity")
+    fun getAllTerms() : List<TermEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addTerm(term : TermEntity)
 }

@@ -2,42 +2,59 @@ package com.example.logisticsestimate
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.logisticsestimate.databinding.ActivityTemporaryPostBinding
 import com.example.logisticsestimate.db.AppDatabase
-import com.example.logisticsestimate.db.TemporaryPostDao
-import com.example.logisticsestimate.db.TemporaryPostEntity
+import com.example.logisticsestimate.db.TemporaryDao
+import com.example.logisticsestimate.db.TemporaryEntity
 
-class TemporaryPostActivity : AppCompatActivity() {
+/**
+ * 작성을 중단한 임시글 목록을 Room 지속성 라이브러리에서 읽어와서 보여준다.
+ */
+class TemporaryBoardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTemporaryPostBinding
 
     private lateinit var db : AppDatabase
-    private lateinit var postDao: TemporaryPostDao
-    private lateinit var postDatas : ArrayList<TemporaryPostEntity>
+    private lateinit var temporaryDao: TemporaryDao
+    private lateinit var entities : ArrayList<TemporaryEntity>
     private lateinit var adapter: TemporaryRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTemporaryPostBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.all_ic_arrow_back)
+
         db = AppDatabase.getInstance(this)!!
-        postDao = db.getTemporaryPostDado()
+        temporaryDao = db.getTemporaryPostDao()
 
         getAllTemporaryPost()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun getAllTemporaryPost() {
         Thread {
-            postDatas = ArrayList(postDao.getAll())
+            entities = ArrayList(temporaryDao.getAll())
             setRecyclerView()
         }.start()
     }
 
     private fun setRecyclerView() {
         runOnUiThread {
-            adapter = TemporaryRecyclerViewAdapter(postDatas, this)
+            adapter = TemporaryRecyclerViewAdapter(entities, this)
+
             binding.activityTemporaryRvList.adapter = adapter
             binding.activityTemporaryRvList.layoutManager = LinearLayoutManager(this)
         }
@@ -49,6 +66,6 @@ class TemporaryPostActivity : AppCompatActivity() {
     }
 
     companion object {
-        val TAG = TemporaryPostActivity::class.java.simpleName
+        val TAG = TemporaryBoardActivity::class.java.simpleName
     }
 }

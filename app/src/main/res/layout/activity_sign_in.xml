@@ -21,8 +21,10 @@
         android:textColor="@color/main_blue"
         android:textColorHint="@color/main_blue"
 
+
         app:layout_constraintBottom_toTopOf="@+id/activity_sign_in_et_pw"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
@@ -31,7 +33,6 @@
         android:id="@+id/activity_sign_in_et_pw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="@color/main_blue"
@@ -43,18 +44,36 @@
         android:textColor="@color/main_blue"
         android:textColorHint="@color/main_blue"
 
-        app:layout_constraintBottom_toTopOf="@+id/activity_sign_in_btn_submit"
+        app:layout_constraintBottom_toTopOf="@+id/activity_sign_in_cb_remember"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_sign_in_et_id" />
 
+    <CheckBox
+        android:id="@+id/activity_sign_in_cb_remember"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="50dp"
+        android:buttonTint="@color/main_blue"
+        android:minHeight="48dp"
+        android:text="로그인 상태 유지"
+
+        android:textColor="@color/main_blue"
+        app:layout_constraintBottom_toTopOf="@+id/activity_sign_in_btn_submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_in_et_pw" />
+
     <Button
         android:id="@+id/activity_sign_in_btn_submit"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="5dp"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="50dp"
 
         android:background="@drawable/all_btn_round_edge"
@@ -66,15 +85,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_sign_in_et_pw" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_in_cb_remember" />
 
     <Button
         android:id="@+id/activity_sign_in_btn_find"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="5dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
+        android:layout_marginTop="5dp"
 
         android:background="@drawable/all_btn_round_edge"
         android:text="ID/PW 찾기"

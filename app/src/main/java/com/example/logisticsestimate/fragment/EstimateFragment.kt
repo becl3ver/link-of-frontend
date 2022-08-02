@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import com.example.logisticsestimate.R
 
 /**
- * @author 이명원
- * @version
+ * 메인 화면, 견적 계산 기능을 수행한다.
  */
 class EstimateFragment : Fragment() {
     override fun onCreateView(

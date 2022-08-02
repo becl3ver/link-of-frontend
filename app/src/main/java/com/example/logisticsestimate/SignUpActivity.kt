@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.example.logisticsestimate.data.AccountRequestDto
 import com.example.logisticsestimate.data.AccountResponseDto
@@ -13,6 +15,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * 회원가입 기능을 수행한다.
+ * 정규표현식을 통해 입력값을 검증하고, 정규표현식을 충족하는 경우에만 로그인 절차를 진행한다.
+ * 입력 변경울 TextChangedListener 통해서 확인하고, 조건 충족 여부를 안내한다.
+ */
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
 
@@ -21,6 +28,11 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        supportActionBar!!.title = "회원 가입"
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.all_ic_arrow_back)
+
 
         binding.activitySignUpBtnIdCheck.setOnClickListener {
             val id = binding.activitySignInEtId.text.toString()
@@ -145,6 +157,21 @@ class SignUpActivity : AppCompatActivity() {
             override fun afterTextChanged(p0: Editable?) {}
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // menuInflater.inflate(R.menu.new_post_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {

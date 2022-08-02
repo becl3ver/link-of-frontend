@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".NewPostActivity">
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/activity_new_post_et_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="48sp"
+        android:backgroundTint="@color/main_blue"
 
-        <EditText
-            android:id="@+id/activity_new_post_et_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:hint="@string/post_title"
-            android:layout_weight="3"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"/>
-
-        <Button
-            android:id="@+id/activity_new_post_btn_submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="완료" /> <!-->이미지로 대체<-->
-
-    </LinearLayout>
+        android:ems="10"
+        android:hint="@string/post_title"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/main_blue"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/activity_new_post_et_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/main_blue"
         android:ems="10"
         android:gravity="left"
-        android:inputType="textLongMessage"
+
+        android:layout_marginBottom="48dp"
+
         android:hint="@string/post_content"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"/>
+        android:inputType="textMultiLine"
+        android:textColor="@color/black"
+        android:textColorHint="@color/main_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_new_post_et_title"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
-        android:id="@+id/activity_new_post_btn_atach"
+        android:id="@+id/activity_new_post_btn_attach"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="첨부 파일" /> <!-->이미지로 대체<-->
-</LinearLayout>
+        android:layout_height="48dp"
+        android:text="첨부 파일"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_new_post_et_content" /> <!-->이미지로 대체<-->
+</androidx.constraintlayout.widget.ConstraintLayout>

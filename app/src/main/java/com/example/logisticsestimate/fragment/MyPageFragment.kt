@@ -15,10 +15,7 @@ import com.example.logisticsestimate.*
 import com.example.logisticsestimate.databinding.FragmentMyPageBinding
 
 /**
- * @author 최재훈
- * @version
- *
- * 앱 종료 시 로그아웃 처리 필요
+ * 로그인, 로그아웃, 앱 설정, 유저 정보를 조회한다.
  */
 class MyPageFragment : Fragment() {
     private var _binding : FragmentMyPageBinding? = null
@@ -38,6 +35,7 @@ class MyPageFragment : Fragment() {
     ): View? {
         _binding = FragmentMyPageBinding.inflate(inflater, container, false)
 
+        /* TODO(토큰 관리 메모리에서 하도록 수정?) */
         if(App.prefs.getAccessToken("empty") == "empty") {
             setBtnSignedOut()
         } else {
@@ -63,11 +61,13 @@ class MyPageFragment : Fragment() {
         binding.fragmentMyPageBtn2.setOnClickListener {
             AlertDialog.Builder(requireActivity()).let {
                 it.setMessage("로그아웃 하시겠습니까?")
-                it.setPositiveButton("네", DialogInterface.OnClickListener { _, _ ->
+                it.setPositiveButton("네") { _, _ ->
                     setBtnSignedOut()
                     App.prefs.removeAccessToken()
+                    App.prefs.removeString("id")
+                    App.prefs.removeString("password")
                     Toast.makeText(context, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
-                })
+                }
                 it.setNegativeButton("아니오", DialogInterface.OnClickListener { _, _ ->
                     return@OnClickListener
                 })

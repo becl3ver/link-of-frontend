@@ -62,7 +62,7 @@ class TestingFragment : Fragment() {
         }
 
         binding.fragmentTestingBtnTest.setOnClickListener {
-            val boardRequest = BoardRequestDto("", "", null, 1, null)
+            val boardRequest = BoardRequestDto("", "", null, 1, 20, null)
 
             val call = BoardRetrofitBuilder.getInstance().getBoards(boardRequest)
             call.enqueue(object : Callback<BoardResponseDto> {
@@ -76,8 +76,8 @@ class TestingFragment : Fragment() {
                         if(response.body()!!.boards.size == 0) {
                             Toast.makeText(context, "content empty", Toast.LENGTH_SHORT).show()
                         } else {
-                            Toast.makeText(context, response.body()!!.boards.get(0).postTitle
-                            + response.body()!!.boards.get(0).postContent,
+                            Toast.makeText(context, response.body()!!.boards.get(0).boardTitle
+                            + response.body()!!.boards.get(0).boardContent,
                             Toast.LENGTH_SHORT).show()
                         }
                     }

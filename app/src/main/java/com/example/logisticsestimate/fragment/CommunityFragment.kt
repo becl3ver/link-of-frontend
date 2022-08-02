@@ -8,15 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.logisticsestimate.BoardListActivity
-import com.example.logisticsestimate.TemporaryPostActivity
-import com.example.logisticsestimate.TermsActivity
+import com.example.logisticsestimate.TemporaryBoardActivity
+import com.example.logisticsestimate.TermActivity
 import com.example.logisticsestimate.databinding.FragmentCommunityBinding
 
 /**
- * 유저가 작성한 글, 북마크, 임시 저장 글 리스트 등에 접근
- * 게시판 접근
- * @author 최재훈
- * @version
+ * 각 게시판으로 진입하는 액티비티를 시작할 수 있게 한다.
  */
 class CommunityFragment : Fragment(), View.OnClickListener {
     private val TAG = CommunityFragment::class.java.name
@@ -49,15 +46,14 @@ class CommunityFragment : Fragment(), View.OnClickListener {
     override fun onClick(p0: View?) {
         when(p0?.id) {
             binding.fragmentCommunityBtnCbm.id -> {}
-            binding.fragmentCommunityBtnDictionary.id -> startActivity(Intent(context, TermsActivity::class.java))
+            binding.fragmentCommunityBtnDictionary.id -> startActivity(Intent(context, TermActivity::class.java))
 
-            binding.fragmentCommunityBtnTemporary.id -> startActivity(Intent(context, TemporaryPostActivity::class.java))
+            binding.fragmentCommunityBtnBookmark.id -> loadBoardList(0)
+            binding.fragmentCommunityBtnTemporary.id -> startActivity(Intent(context, TemporaryBoardActivity::class.java))
 
-            binding.fragmentCommunityBtnNotice.id -> loadBoardList(0)
-            binding.fragmentCommunityBtnQna.id -> loadBoardList(1)
-            binding.fragmentCommunityBtnFree.id -> loadBoardList(2)
-
-            else -> Log.d(TAG, "Failed to find onClick()")
+            binding.fragmentCommunityBtnNotice.id -> loadBoardList(1)
+            binding.fragmentCommunityBtnQna.id -> loadBoardList(2)
+            binding.fragmentCommunityBtnFree.id -> loadBoardList(3)
         }
     }
 
@@ -66,6 +62,6 @@ class CommunityFragment : Fragment(), View.OnClickListener {
     }
 
     companion object {
-        val BOARD_NAME = arrayOf("공지사항", "Q&A", "자유")
+        val BOARD_NAME = arrayOf("즐겨찾기", "공지사항", "Q&A", "자유")
     }
 }
