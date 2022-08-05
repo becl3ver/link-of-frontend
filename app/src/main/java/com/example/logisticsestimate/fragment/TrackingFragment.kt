@@ -28,10 +28,10 @@ class TrackingFragment : Fragment(), OnMapReadyCallback {
             Activity.RESULT_OK -> {
                 val intent = result.data
                 if (intent != null) {
-                    val tmpLat = intent.getDoubleExtra("latitude", 0.0)
-                    val tmpLong = intent.getDoubleExtra("longitude", 0.0)
+                    val tmpLat = intent.getDoubleExtra("latitude", 1000.0)
+                    val tmpLong = intent.getDoubleExtra("longitude", 1000.0)
 
-                    if(tmpLat == 0.0 && tmpLong == 0.0) {
+                    if(tmpLat == 1000.0 && tmpLong == 1000.0) {
                         Toast.makeText(context, "위치를 불러오는데 실패하였습니다.", Toast.LENGTH_SHORT).show()
                     } else {
                         currentLat = tmpLat
@@ -46,6 +46,8 @@ class TrackingFragment : Fragment(), OnMapReadyCallback {
             Activity.RESULT_CANCELED -> {
                 Toast.makeText(context, "선박 위치를 불러오는데 실패하였습니다.", Toast.LENGTH_SHORT).show()
             }
+
+            Activity.RESULT_CANCELED -> {}
         }
     }
 

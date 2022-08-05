@@ -74,12 +74,13 @@ class BoardRecyclerViewAdapter(private val items : ArrayList<BoardData>) : Recyc
             _title = boardData.boardTitle
             _content = boardData.boardContent
 
-            title.text = _title
-            content.text = _content
+            title.text = if(_title.length > 20) _title.substring(0, 20) + "..." else _title
+            content.text = if(_content.length > 30) _content.substring(0, 30) + "..." else _content
+
             date.text = boardData.date
             nickname.text = boardData.nickname
 
-            boardId = boardData.boardId
+            boardId = boardData.id
 
             container.setOnClickListener { view ->
                 view.context.startActivity(Intent(context, BoardViewActivity::class.java).let {

@@ -4,6 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class CommentDto( // 토큰 필요
     @SerializedName("content") val content : String,
-    @SerializedName("parentId") val parentId : Long,
+    @SerializedName("parentId") val parentId : Long?,
     @SerializedName("isNested") val isNested : Boolean
 )

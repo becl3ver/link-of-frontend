@@ -52,6 +52,30 @@ class BoardViewActivity : AppCompatActivity() {
                 Toast.makeText(this@BoardViewActivity, "댓글을 불러오지 못했습니다.", Toast.LENGTH_SHORT).show()
             }
         })
+
+        binding.activityBoardViewBtnSubmit.setOnClickListener {
+            if(binding.activityBoardViewEtNew.text.toString() == "") {
+                return@setOnClickListener
+            }
+
+            val content = binding.activityBoardViewEtNew.text.toString()
+            val commentDto = CommentDto(content, null, false)
+            val call = BoardRetrofitBuilder.getInstance().putNewComment(App.prefs.getAccessToken(""), commentDto)
+
+            call.enqueue(object : Callback<String> {
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    if(!response.isSuccessful) {
+
+                    } else {
+
+                    }
+                }
+
+                override fun onFailure(call: Call<String>, t: Throwable) {
+
+                }
+            })
+        }
     }
 
     private fun setRecyclerView() {
@@ -74,8 +98,6 @@ class BoardViewActivity : AppCompatActivity() {
                     nested.content, nested.date, nested.nickname, nested.id, nested.uid, comment.id, comment.uid))
             }
         }
-        items.add(Comment(CommentRecyclerViewAdapter.VIEW_TYPE_FOOTER,
-            null, null, null, null, null, null, null))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

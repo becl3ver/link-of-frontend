@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.logisticsestimate.data.BoardData
 import com.example.logisticsestimate.data.Comment
-import com.example.logisticsestimate.databinding.FooterBoardBinding
 import com.example.logisticsestimate.databinding.HeaderBoardBinding
 import com.example.logisticsestimate.databinding.ItemCommentBinding
 import com.example.logisticsestimate.databinding.ItemNestedCommentBinding
@@ -24,15 +23,10 @@ class CommentRecyclerViewAdapter(private val items : ArrayList<Comment>, private
                 val binding = ItemCommentBinding.inflate(layoutInflater, parent, false)
                 CommentViewHolder(binding)
             }
-            VIEW_TYPE_NESTED_COMMENT -> {
+            else -> {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemNestedCommentBinding.inflate(layoutInflater, parent, false)
                 NestedCommentViewHolder(binding)
-            }
-            else -> {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = FooterBoardBinding.inflate(layoutInflater, parent, false)
-                FooterViewHolder(binding)
             }
         }
     }
@@ -59,12 +53,6 @@ class CommentRecyclerViewAdapter(private val items : ArrayList<Comment>, private
             binding.headerBoardContent.text = boardData.boardContent
             binding.headerBoardNickname.text = boardData.nickname
             binding.headerBoardDate.text = boardData.date
-        }
-    }
-
-    inner class FooterViewHolder(binding : FooterBoardBinding) : RecyclerView.ViewHolder(binding.root) {
-        init {
-
         }
     }
 
@@ -122,6 +110,5 @@ class CommentRecyclerViewAdapter(private val items : ArrayList<Comment>, private
         val VIEW_TYPE_HEADER = 0
         val VIEW_TYPE_COMMENT = 1
         val VIEW_TYPE_NESTED_COMMENT = 2
-        val VIEW_TYPE_FOOTER = 3
     }
 }

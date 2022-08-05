@@ -170,7 +170,6 @@ class BoardListActivity : AppCompatActivity() {
 
                         for(bd in response.body()!!.boards) {
                             items.add(bd)
-                            Log.d(BoardListActivity::class.java.name, bd.boardId.toString())
                         }
 
                         adapter.notifyItemRangeInserted(0, response.body()!!.boards.size)
@@ -188,7 +187,7 @@ class BoardListActivity : AppCompatActivity() {
     }
 
     private fun getMore() {
-        request.range = items.last().boardId - 1
+        request.range = items.last().id - 1
 
         items.add(BoardData(-1, 0, 0, "", "", "", ""))
         adapter.notifyItemInserted(items.size - 1)

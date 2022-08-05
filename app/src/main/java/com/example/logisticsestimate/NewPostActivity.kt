@@ -54,7 +54,7 @@ class NewPostActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.create_board -> {
-                if(binding.activityNewPostEtTitle.text.equals("") || binding.activityNewPostEtContent.equals("")) {
+                if(binding.activityNewPostEtTitle.text.toString() == "" || binding.activityNewPostEtContent.text.toString() == "") {
                     Toast.makeText(this@NewPostActivity, "제목과 내용은 입력해야 합니다.", Toast.LENGTH_SHORT).show()
                 } else {
                     val title = binding.activityNewPostEtTitle.text.toString()

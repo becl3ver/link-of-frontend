@@ -9,5 +9,42 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activity_board_view_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBaseline_toTopOf=""/>
+
+    <EditText
+        android:id="@+id/activity_board_view_et_new"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/main_blue"
+        android:ems="10"
+        android:gravity="left"
+
+        android:hint="@string/post_content"
+        android:inputType="textMultiLine"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/activity_board_view_btn_submit"/>
+
+    <LinearLayout
+        android:id="@+id/activity_board_view_btn_submit"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@drawable/all_btn_round_edge"
+        android:drawableTop="@drawable/all_ic_baseline_send_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/all_ic_baseline_send_24"
+            app:tint="@color/white"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

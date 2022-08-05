@@ -16,8 +16,9 @@
         android:hint="@string/post_title"
         android:inputType="text"
         android:minHeight="48dp"
-        android:textColor="@color/black"
+        android:textColor="@color/main_blue"
         android:textColorHint="@color/main_blue"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -30,16 +31,14 @@
         android:ems="10"
         android:gravity="left"
 
-        android:layout_marginBottom="48dp"
-
         android:hint="@string/post_content"
         android:inputType="textMultiLine"
         android:textColor="@color/black"
-        android:textColorHint="@color/main_blue"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_new_post_et_title"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/activity_new_post_btn_attach" />
 
     <Button
         android:id="@+id/activity_new_post_btn_attach"

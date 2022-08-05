@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ship_search_type">
+        <item>선박 ID</item>
+        <item>IMO</item>
+        <item>MMSI</item>
+    </string-array>
+</resources>

@@ -1,6 +1,7 @@
 package com.example.logisticsestimate.fragment
 
 import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -13,18 +14,22 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import com.example.logisticsestimate.*
 import com.example.logisticsestimate.databinding.FragmentMyPageBinding
+import kotlin.concurrent.thread
 
 /**
  * 로그인, 로그아웃, 앱 설정, 유저 정보를 조회한다.
  */
 class MyPageFragment : Fragment() {
+    private lateinit var mainActivity: MainActivity
     private var _binding : FragmentMyPageBinding? = null
     private val binding get() = _binding!!
 
     private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result->
         when(result.resultCode) {
             RESULT_OK -> {
-                setBtnSignedIn()
+                mainActivity.runOnUiThread {
+                    setBtnSignedIn()
+                }
             }
         }
     }
@@ -48,6 +53,11 @@ class MyPageFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
     }
 
     private fun setBtnSignedIn() {

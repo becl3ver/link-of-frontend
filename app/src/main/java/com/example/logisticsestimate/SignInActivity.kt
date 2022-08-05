@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.example.logisticsestimate.data.*
 import com.example.logisticsestimate.databinding.ActivitySignInBinding
+import com.example.logisticsestimate.fragment.MyPageFragment
 import com.example.logisticsestimate.repository.AccountRetrofitBuilder
 import retrofit2.*
 

@@ -22,6 +22,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        buildConfigField "String", "MARINE_TRAFFIC_API_URL", properties['marine_traffic_api_url']
+        buildConfigField "String", "MARINE_TRAFFIC_API_KEY", properties['marine_traffic_api_key']
         buildConfigField "String", "SPRING_API_URL", properties['spring_api_url']
         buildConfigField "String", "SSL_CERTIFICATE_URL", properties['ssl_certificate_url']
         manifestPlaceholders = [GOOGLE_MAP_API_KEY: googleMapApiKey]

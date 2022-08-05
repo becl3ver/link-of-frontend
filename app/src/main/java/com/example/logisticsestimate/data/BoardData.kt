@@ -5,7 +5,7 @@ import java.io.Serializable
 
 data class BoardData(
     @SerializedName("category") var category: Int,
-    @SerializedName("boardId") var boardId: Long,
+    @SerializedName("id") var id: Long,
     @SerializedName("uid") var uid: Long,
     @SerializedName("date") var date: String,
 

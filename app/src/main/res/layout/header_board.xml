@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="20dp">
 
     <TextView
@@ -16,28 +16,50 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
+    <ImageView
+        android:id="@+id/header_board_ic_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/all_ic_baseline_person_24"
+
+        app:layout_constraintTop_toBottomOf="@id/header_board_title"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <TextView
         android:id="@+id/header_board_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
         android:textColor="@color/black"
         android:text="@string/nickname"
         android:textSize="15sp"
         app:layout_constraintTop_toBottomOf="@id/header_board_title"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toEndOf="@id/header_board_ic_user"/>
+
+    <ImageView
+        android:id="@+id/header_board_ic_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/all_ic_baseline_access_time_24"
+
+        app:layout_constraintTop_toBottomOf="@id/header_board_title"
+        app:layout_constraintStart_toEndOf="@id/header_board_nickname"/>
 
     <TextView
         android:id="@+id/header_board_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="5dp"
         android:textColor="@color/black"
         android:text="@string/date"
         android:textSize="15sp"
         app:layout_constraintTop_toBottomOf="@id/header_board_title"
-        app:layout_constraintStart_toEndOf="@id/header_board_nickname"/>
+        app:layout_constraintStart_toEndOf="@id/header_board_ic_time"/>
 
     <TextView
         android:id="@+id/header_board_content"

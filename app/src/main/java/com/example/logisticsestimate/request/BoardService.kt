@@ -14,9 +14,9 @@ interface BoardService {
     @POST("/board/search")
     fun getBoards(@Body boardRequestDto: BoardRequestDto) : Call<BoardResponseDto>
 
-    @POST("/auth/board/comment/new")
-    fun putNewComment(@Header("token") token: String, @Body commentDto: CommentDto) : Call<String>
+    @POST("/auth/comment/new")
+    fun putNewComment(@Header("Authorization") token: String, @Body commentDto: CommentDto) : Call<String>
 
-    @POST("/board/comment/search")
+    @POST("/comment/search")
     fun getComments(@Body commentRequestDto: CommentRequestDto) : Call<CommentResponseDto>
 }
