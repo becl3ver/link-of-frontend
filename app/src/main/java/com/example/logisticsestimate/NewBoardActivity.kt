@@ -7,8 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.logisticsestimate.data.BoardDto
-import com.example.logisticsestimate.databinding.ActivityNewPostBinding
+import com.example.logisticsestimate.data.board.BoardDto
+import com.example.logisticsestimate.data.board.BoardUpdateDto
+import com.example.logisticsestimate.databinding.ActivityNewBoardBinding
 import com.example.logisticsestimate.db.AppDatabase
 import com.example.logisticsestimate.db.TemporaryEntity
 import com.example.logisticsestimate.repository.BoardRetrofitBuilder
@@ -21,27 +22,21 @@ import java.time.LocalDate
  * 게시판에 대한 새로운 글을 작성할 수 있게 한다.
  * 작성 중 뒤로 이동하면 작성 중이던 내용을 Room 지속성 라이브러리에 저장할지 AlertDialog를 통해서 확인한다.
  */
-class NewPostActivity : AppCompatActivity() {
-    val TAG = NewPostActivity::class.java.name
-    private lateinit var binding: ActivityNewPostBinding
-    private var category: Int = -1
+class NewBoardActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityNewBoardBinding
+    private var category = 0
+    private var boardId : Long = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityNewPostBinding.inflate(layoutInflater)
+        binding = ActivityNewBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.all_ic_arrow_back)
 
-        category = intent.getIntExtra("category", -1)
-
-        if(category == -1) {
-            Log.d(NewPostActivity::class.java.name, "category value out of range")
-            Toast.makeText(this@NewPostActivity, "글을 작성할 수 없습니다.", Toast.LENGTH_SHORT).show()
-            finish()
-        }
-
+        category = intent.getIntExtra("category", 0)
+        boardId = intent.getLongExtra("boardId", -1)
         binding.activityNewPostEtTitle.setText(intent.getStringExtra("title"))
         binding.activityNewPostEtContent.setText(intent.getStringExtra("content"))
     }
@@ -55,31 +50,42 @@ class NewPostActivity : AppCompatActivity() {
         when(item.itemId) {
             R.id.create_board -> {
                 if(binding.activityNewPostEtTitle.text.toString() == "" || binding.activityNewPostEtContent.text.toString() == "") {
-                    Toast.makeText(this@NewPostActivity, "제목과 내용은 입력해야 합니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@NewBoardActivity, "제목과 내용은 입력해야 합니다.", Toast.LENGTH_SHORT).show()
                 } else {
                     val title = binding.activityNewPostEtTitle.text.toString()
                     val content = binding.activityNewPostEtContent.text.toString()
-                    val boardDto = BoardDto(title, content, category)
                     val token = App.prefs.getAccessToken("")
+                    val service = BoardRetrofitBuilder.getInstance()
 
-                    val call = BoardRetrofitBuilder.getInstance().putNewBoard(token, boardDto)
+                    val call = when(boardId) {
+                        (-1).toLong() -> {
+                            val boardDto = BoardDto(title, content, category)
+                            service.putNewBoard(token, boardDto)
+                        }
+                        else -> {
+                            val boardUpdateDto = BoardUpdateDto(title, content, category, boardId)
+                            service.updateBoard(token, boardUpdateDto)
+                        }
+                    }
+
                     call.enqueue(object : Callback<String> {
                         override fun onResponse(call: Call<String>, response: Response<String>) {
                             if (!response.isSuccessful) {
-                                Log.d(TAG, "Response is not successful")
-                                setResult(RESULT_CANCELED)
-                                finish()
+                                if(response.code() == 401) {
+
+                                } else {
+                                    Toast.makeText(this@NewBoardActivity, "오류가 발생했습니다.", Toast.LENGTH_SHORT).show()
+                                }
                             } else {
-                                Log.d(TAG, response.body()!!)
+                                Toast.makeText(this@NewBoardActivity, "작성이 완료되었습니다.", Toast.LENGTH_SHORT).show()
                                 setResult(RESULT_OK)
                                 finish()
                             }
                         }
 
                         override fun onFailure(call: Call<String>, t: Throwable) {
-                            Log.d(TAG, "FAILED");
-                            setResult(RESULT_CANCELED)
-                            finish()
+                            Log.d("http", t.message!!)
+                            Toast.makeText(this@NewBoardActivity, "연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
                         }
                     })
                 }

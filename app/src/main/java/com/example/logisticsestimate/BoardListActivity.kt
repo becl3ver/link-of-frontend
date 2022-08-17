@@ -3,18 +3,20 @@ package com.example.logisticsestimate
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.logisticsestimate.data.BoardData
-import com.example.logisticsestimate.data.BoardRequestDto
-import com.example.logisticsestimate.data.BoardResponseDto
+import com.example.logisticsestimate.data.board.BoardData
+import com.example.logisticsestimate.data.board.BoardRequestDto
+import com.example.logisticsestimate.data.board.BoardResponseDto
 import com.example.logisticsestimate.databinding.ActivityBoardListBinding
 import com.example.logisticsestimate.db.AppDatabase
+import com.example.logisticsestimate.db.BookmarkEntity
 import com.example.logisticsestimate.fragment.CommunityFragment
 import com.example.logisticsestimate.repository.BoardRetrofitBuilder
 import retrofit2.Call
@@ -32,20 +34,22 @@ class BoardListActivity : AppCompatActivity() {
     private lateinit var adapter : BoardRecyclerViewAdapter
     private lateinit var request : BoardRequestDto
 
+    private val db = AppDatabase.getInstance(this)!!
+    private val bookmarkDao = db.getBookmarkDao()
+
     private val items = ArrayList<BoardData>()
     private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         when(result.resultCode) {
             RESULT_OK -> {
                 refreshBoardList()
             }
-            else -> {
-                refreshBoardList()
-            }
         }
     }
 
     private var isLoading = false
+    private var isSearched = false
     private var category = -1
+    private var keyword : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,29 +57,26 @@ class BoardListActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         category = intent.getIntExtra("category", -1)
+        keyword = intent.getStringExtra("keyword")
+        isSearched = intent.getBooleanExtra("isSearched", false)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.all_ic_arrow_back)
         supportActionBar!!.title = CommunityFragment.BOARD_NAME[category]
 
-        // 플로팅 버튼 클릭 리스너
-        binding.activityBoardListFab.setOnClickListener {
-            val intent = Intent(this, NewPostActivity::class.java)
-            intent.putExtra("category", category)
-            getResult.launch(intent)
-        }
+        setRecyclerView()
 
         binding.activityBoardListSrl.setOnRefreshListener {
-            if(category != -1) {
+            if(category != 0) {
                 refreshBoardList()
             }
             binding.activityBoardListSrl.isRefreshing = false
         }
 
-        if(category == -1) {
+        if(category == 0) {
+            binding.activityBoardListFab.visibility = View.GONE
+
             Thread {
-                val db = AppDatabase.getInstance(this)!!
-                val bookmarkDao = db.getBookmarkDao()
                 val entities = ArrayList(bookmarkDao.getAll())
                 val boards = ArrayList<Long>()
 
@@ -83,26 +84,67 @@ class BoardListActivity : AppCompatActivity() {
                     boards.add(entity.boardId)
                 }
 
-                request = BoardRequestDto(null, null, null, null, null, boards)
-                setRecyclerView()
-
+                request = BoardRequestDto(null, null, null, null, boards)
                 initBoardList()
-            }.start()
 
+                bookmarkDao.truncateEntity()
+            }.start()
         } else {
-            request = BoardRequestDto(null, null, Long.MAX_VALUE, category, 20, null)
-            setRecyclerView()
+            // 플로팅 버튼 클릭 리스너
+            binding.activityBoardListFab.setOnClickListener {
+                val intent = Intent(this, NewBoardActivity::class.java)
+                intent.putExtra("category", category)
+                getResult.launch(intent)
+            }
+
+            request = BoardRequestDto(keyword, Long.MAX_VALUE, category, 20, null)
             initBoardList()
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        if(category == 0) {
+            Thread {
+                for(item in items) {
+                    bookmarkDao.insertEntity(BookmarkEntity(item.id))
+                }
+            }.start()
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        if(category != 0 && !isSearched) {
+            menuInflater.inflate(R.menu.board_list_menu, menu)
+
+            val searchView = menu?.findItem(R.id.menu_search)?.actionView as SearchView
+            searchView.maxWidth = Integer.MAX_VALUE
+            searchView.queryHint = "글 제목, 내용"
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    val intent = Intent(this@BoardListActivity, BoardListActivity::class.java)
+                    intent.putExtra("category", category)
+                    intent.putExtra("keyword", query ?: "")
+                    intent.putExtra("isSearched", true)
+                    startActivity(intent)
+                    return false
+                }
+            })
+
+        }
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // TODO("새로고침 버튼 추가")
         when(item.itemId) {
+            R.id.menu_refresh -> {
+                refreshBoardList()
+            }
             android.R.id.home -> {
                 onBackPressed()
             }
@@ -113,15 +155,16 @@ class BoardListActivity : AppCompatActivity() {
 
     private fun refreshBoardList() {
         isLoading = true
+        val position = items.size
         items.clear()
-        adapter.notifyDataSetChanged()
-        request = BoardRequestDto(null, null, Long.MAX_VALUE, category, 20, null)
+        adapter.notifyItemRangeRemoved(0, position)
+        request = BoardRequestDto(keyword, Long.MAX_VALUE, category, 20, null)
         initBoardList()
     }
 
     private fun setRecyclerView() {
         runOnUiThread {
-            adapter = BoardRecyclerViewAdapter(items)
+            adapter = BoardRecyclerViewAdapter(items, getResult)
             binding.activityBoardListRvList.adapter = adapter
             binding.activityBoardListRvList.layoutManager = LinearLayoutManager(this)
         }
@@ -174,8 +217,10 @@ class BoardListActivity : AppCompatActivity() {
 
                         adapter.notifyItemRangeInserted(0, response.body()!!.boards.size)
 
-                        initScrollListener()
-                        isLoading = false
+                        if(category != 0) {
+                            initScrollListener()
+                            isLoading = false
+                        }
                     }
                 }
             }

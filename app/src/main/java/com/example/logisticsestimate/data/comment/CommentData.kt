@@ -1,4 +1,4 @@
-package com.example.logisticsestimate.data
+package com.example.logisticsestimate.data.comment
 
 data class CommentData(
     val nickname: String,

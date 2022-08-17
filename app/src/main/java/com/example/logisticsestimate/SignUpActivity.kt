@@ -7,8 +7,8 @@ import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import com.example.logisticsestimate.data.AccountRequestDto
-import com.example.logisticsestimate.data.AccountResponseDto
+import com.example.logisticsestimate.data.login.AccountRequestDto
+import com.example.logisticsestimate.data.login.AccountResponseDto
 import com.example.logisticsestimate.databinding.ActivitySignUpBinding
 import com.example.logisticsestimate.repository.AccountRetrofitBuilder
 import retrofit2.Call

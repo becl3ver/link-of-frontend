@@ -5,7 +5,6 @@ import androidx.room.OnConflictStrategy.REPLACE
 
 @Dao
 interface TermDao {
-
     @Query("SELECT * FROM TermEntity WHERE name LIKE '%' || :query || '%'")
     fun getQueryTerms(query: String) : List<TermEntity>
 

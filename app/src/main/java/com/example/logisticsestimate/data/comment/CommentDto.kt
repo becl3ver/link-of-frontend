@@ -1,9 +1,9 @@
-package com.example.logisticsestimate.data
+package com.example.logisticsestimate.data.comment
 
 import com.google.gson.annotations.SerializedName
 
-data class CommentDto( // 토큰 필요
+data class CommentDto(
     @SerializedName("content") val content : String,
     @SerializedName("parentId") val parentId : Long?,
-    @SerializedName("isNested") val isNested : Boolean
+    @SerializedName("is_nested") val isNested : Boolean
 )

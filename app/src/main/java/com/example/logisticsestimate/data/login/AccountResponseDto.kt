@@ -1,8 +1,7 @@
-package com.example.logisticsestimate.data
+package com.example.logisticsestimate.data.login
 
 import com.google.gson.annotations.SerializedName
 
-// 회원가입 성공, 실패
 data class AccountResponseDto(
     @SerializedName("result") var result: String
     )

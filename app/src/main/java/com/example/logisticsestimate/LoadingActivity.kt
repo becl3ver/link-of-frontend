@@ -4,10 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.widget.Toast
-import com.example.logisticsestimate.data.AccountSignInDto
-import com.example.logisticsestimate.data.TokenDto
+import com.example.logisticsestimate.data.login.AccountSignInDto
+import com.example.logisticsestimate.data.login.TokenDto
 import com.example.logisticsestimate.databinding.ActivityLoadingBinding
 import com.example.logisticsestimate.db.AppDatabase
 import com.example.logisticsestimate.db.TermEntity
@@ -49,8 +48,13 @@ class LoadingActivity : AppCompatActivity() {
                         Toast.makeText(this@LoadingActivity, "연결이 비정상적입니다.", Toast.LENGTH_SHORT).show()
                         return;
                     } else {
-                        App.prefs.setAccessToken(response.body()?.token)
-                        Toast.makeText(this@LoadingActivity, "응답값 : " + App.prefs.getAccessToken(""), Toast.LENGTH_SHORT).show()
+                        App.prefs.removeAccessToken()
+                        App.prefs.removeUid()
+                        App.prefs.removeNickname()
+
+                        App.prefs.setAccessToken(response.body()!!.token)
+                        App.prefs.setUid(response.body()!!.uid)
+                        App.prefs.setNickname(response.body()!!.nickname)
 
                         setResult(RESULT_OK)
                         finish()

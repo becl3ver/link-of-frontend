@@ -10,6 +10,12 @@ interface BookmarkDao {
     @Query("SELECT * FROM BookmarkEntity")
     fun getAll() : List<BookmarkEntity>
 
+    @Query("SELECT * FROM BookmarkEntity WHERE boardId = :query")
+    fun selectEntity(query : Long) : List<BookmarkEntity>
+
+    @Query("DELETE FROM BookmarkEntity")
+    fun truncateEntity()
+
     @Insert
     fun insertEntity(entity : BookmarkEntity)
 

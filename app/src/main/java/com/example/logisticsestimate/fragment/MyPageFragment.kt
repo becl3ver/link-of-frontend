@@ -40,7 +40,6 @@ class MyPageFragment : Fragment() {
     ): View? {
         _binding = FragmentMyPageBinding.inflate(inflater, container, false)
 
-        /* TODO(토큰 관리 메모리에서 하도록 수정?) */
         if(App.prefs.getAccessToken("empty") == "empty") {
             setBtnSignedOut()
         } else {
@@ -74,6 +73,8 @@ class MyPageFragment : Fragment() {
                 it.setPositiveButton("네") { _, _ ->
                     setBtnSignedOut()
                     App.prefs.removeAccessToken()
+                    App.prefs.removeUid()
+                    App.prefs.removeNickname()
                     App.prefs.removeString("id")
                     App.prefs.removeString("password")
                     Toast.makeText(context, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()

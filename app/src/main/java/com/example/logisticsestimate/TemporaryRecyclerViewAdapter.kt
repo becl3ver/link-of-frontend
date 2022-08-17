@@ -38,7 +38,7 @@ class TemporaryRecyclerViewAdapter(private val entities : ArrayList<TemporaryEnt
             date.text = entity.date
 
             container.setOnClickListener { view ->
-                view.context.startActivity(Intent(context, NewPostActivity::class.java).let {
+                view.context.startActivity(Intent(context, NewBoardActivity::class.java).let {
                     it.putExtra("title", _title)
                     it.putExtra("content", _content)
                     it.putExtra("category", _category)

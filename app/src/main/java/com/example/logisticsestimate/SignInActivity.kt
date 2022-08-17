@@ -7,9 +7,9 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import com.example.logisticsestimate.data.*
+import com.example.logisticsestimate.data.login.AccountSignInDto
+import com.example.logisticsestimate.data.login.TokenDto
 import com.example.logisticsestimate.databinding.ActivitySignInBinding
-import com.example.logisticsestimate.fragment.MyPageFragment
 import com.example.logisticsestimate.repository.AccountRetrofitBuilder
 import retrofit2.*
 
@@ -45,9 +45,12 @@ class SignInActivity : AppCompatActivity() {
                         return;
                     } else {
                         App.prefs.removeAccessToken()
-                        App.prefs.setAccessToken(response.body()?.token)
-                        Toast.makeText(this@SignInActivity, "응답값 : " + App.prefs.getAccessToken(""), Toast.LENGTH_SHORT).show()
-                        Log.d(SignInActivity::class.toString(), "토큰 응답 : " + response.body()?.token)
+                        App.prefs.removeUid()
+                        App.prefs.removeNickname()
+
+                        App.prefs.setAccessToken(response.body()!!.token)
+                        App.prefs.setUid(response.body()!!.uid)
+                        App.prefs.setNickname(response.body()!!.nickname)
 
                         if(binding.activitySignInCbRemember.isChecked) {
                             App.prefs.setString("id", id)
@@ -73,7 +76,6 @@ class SignInActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        // menuInflater.inflate(R.menu.new_post_menu, menu)
         return true
     }
 

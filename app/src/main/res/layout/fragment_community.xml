@@ -48,7 +48,7 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/all_ic_boat_24"
+                android:src="@drawable/fragment_community_ic_cbm_24"
                 app:tint="@color/main_blue" />
 
             <TextView
@@ -75,7 +75,7 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/all_ic_boat_24"
+                android:src="@drawable/fragment_community_ic_dictionary_24"
                 app:tint="@color/main_blue" />
 
             <TextView
@@ -129,7 +129,7 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/all_ic_boat_24"
+                android:src="@drawable/fragment_community_ic_bookmark_24"
                 app:tint="@color/main_blue" />
 
             <TextView
@@ -156,7 +156,7 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/all_ic_boat_24"
+                android:src="@drawable/fragment_community_ic_temporary_24"
                 app:tint="@color/main_blue" />
 
             <TextView
@@ -183,7 +183,7 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/all_ic_boat_24"
+                android:src="@drawable/fragment_community_ic_notice_24"
                 app:tint="@color/main_blue" />
 
             <TextView
@@ -211,7 +211,7 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/all_ic_boat_24"
+                android:src="@drawable/fragment_community_ic_qna_24"
                 app:tint="@color/main_blue" />
 
             <TextView
@@ -238,7 +238,7 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/all_ic_boat_24"
+                android:src="@drawable/fragment_community_ic_free_24"
                 app:tint="@color/main_blue" />
 
             <TextView

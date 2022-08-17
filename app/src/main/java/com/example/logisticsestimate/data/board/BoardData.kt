@@ -1,4 +1,4 @@
-package com.example.logisticsestimate.data
+package com.example.logisticsestimate.data.board
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

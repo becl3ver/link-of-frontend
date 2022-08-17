@@ -5,17 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.logisticsestimate.databinding.ActivityTermBinding
 import com.example.logisticsestimate.db.AppDatabase
 import com.example.logisticsestimate.db.TermEntity
-import org.json.JSONArray
 
 class TermActivity : AppCompatActivity() {
 
@@ -54,22 +51,21 @@ class TermActivity : AppCompatActivity() {
         })
 
         // EditText의 액션 리스너
-        binding.termSearchEt.setOnEditorActionListener(object: TextView.OnEditorActionListener {
-            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
-                var handled = false
+        binding.termSearchEt.setOnEditorActionListener { _, actionId, _ ->
+            var handled = false
 
-                // 검색 버튼을 눌렀을 경우
-                if(actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    handled = true
+            // 검색 버튼을 눌렀을 경우
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                handled = true
 
-                    // 활성화된 키보드 내리기
-                    val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    inputMethodManager.hideSoftInputFromWindow(binding.termSearchEt.windowToken, 0)
-                }
-
-                return handled
+                // 활성화된 키보드 내리기
+                val inputMethodManager =
+                    getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(binding.termSearchEt.windowToken, 0)
             }
-        })
+
+            handled
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -1,4 +1,4 @@
-package com.example.logisticsestimate.data
+package com.example.logisticsestimate.data.comment
 
 import com.google.gson.annotations.SerializedName
 

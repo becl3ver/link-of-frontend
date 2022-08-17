@@ -2,6 +2,7 @@ package com.example.logisticsestimate.repository
 
 import com.example.logisticsestimate.BuildConfig
 import com.example.logisticsestimate.request.*
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -26,7 +27,7 @@ class BoardRetrofitBuilder {
             return Retrofit.Builder()
                 .baseUrl(BuildConfig.SPRING_API_URL)
                 .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
                 .build()
                 .create(BoardService::class.java)
         }

@@ -18,6 +18,5 @@ class App : Application() {
 
         context = applicationContext
         prefs = PreferenceUtil(applicationContext)
-        //Security.insertProviderAt(Conscrypt.newProvider(), 1);
     }
 }

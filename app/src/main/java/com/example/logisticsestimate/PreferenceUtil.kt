@@ -33,6 +33,18 @@ class PreferenceUtil(context: Context) {
         return prefs.getLong("uid", num)
     }
 
+    fun removeNickname() {
+        prefs.edit().remove("nickname").apply()
+    }
+
+    fun setNickname(nickname : String) {
+        prefs.edit().putString("nickname", nickname).apply()
+    }
+
+    fun getNickname(str : String) : String {
+        return prefs.getString("nickname", str)!!
+    }
+
     fun removeAccessToken() {
         prefs.edit().remove("access_token").apply()
     }

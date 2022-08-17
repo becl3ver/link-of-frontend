@@ -4,16 +4,17 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.activity.result.ActivityResultLauncher
 import androidx.recyclerview.widget.RecyclerView
 import com.example.logisticsestimate.App.Companion.context
-import com.example.logisticsestimate.data.BoardData
+import com.example.logisticsestimate.data.board.BoardData
 import com.example.logisticsestimate.databinding.ItemLoadingBinding
 import com.example.logisticsestimate.databinding.ItemBoardBinding
 
 /**
  * 글 목록을 불러오는 중이라면 LoadingViewHolder 객체를 생성하고, 그렇지 않다면 ItemViewHolder 객체를 생성한다.
  */
-class BoardRecyclerViewAdapter(private val items : ArrayList<BoardData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class BoardRecyclerViewAdapter(private val items : ArrayList<BoardData>, private val getResult : ActivityResultLauncher<Intent>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
 
@@ -82,8 +83,8 @@ class BoardRecyclerViewAdapter(private val items : ArrayList<BoardData>) : Recyc
 
             boardId = boardData.id
 
-            container.setOnClickListener { view ->
-                view.context.startActivity(Intent(context, BoardViewActivity::class.java).let {
+            container.setOnClickListener {
+                getResult.launch(Intent(context, BoardViewActivity::class.java).let {
                     it.putExtra("boardData", boardData)
                 })
             }

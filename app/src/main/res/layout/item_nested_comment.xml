@@ -16,6 +16,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <ImageView
+        android:id="@+id/item_nested_comment_btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/item_comment_ic_delete_24"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <TextView
         android:id="@+id/item_nested_comment_tv_content"
         android:layout_width="0dp"

@@ -27,6 +27,7 @@ class TemporaryBoardActivity : AppCompatActivity() {
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.all_ic_arrow_back)
+        supportActionBar!!.title = "임시 저장 글"
 
         db = AppDatabase.getInstance(this)!!
         temporaryDao = db.getTemporaryPostDao()
@@ -63,9 +64,5 @@ class TemporaryBoardActivity : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
         getAllTemporaryPost()
-    }
-
-    companion object {
-        val TAG = TemporaryBoardActivity::class.java.simpleName
     }
 }

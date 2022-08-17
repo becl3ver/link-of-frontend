@@ -30,6 +30,7 @@ class CommunityFragment : Fragment(), View.OnClickListener {
         binding.fragmentCommunityBtnCbm.setOnClickListener(this)
         binding.fragmentCommunityBtnDictionary.setOnClickListener(this)
 
+        binding.fragmentCommunityBtnBookmark.setOnClickListener(this)
         binding.fragmentCommunityBtnTemporary.setOnClickListener(this)
         binding.fragmentCommunityBtnNotice.setOnClickListener(this)
         binding.fragmentCommunityBtnFree.setOnClickListener(this)
@@ -58,7 +59,7 @@ class CommunityFragment : Fragment(), View.OnClickListener {
     }
 
     private fun loadBoardList(idx : Int) {
-        startActivity(Intent(context, BoardListActivity::class.java).let { it.putExtra("category", idx) })
+        startActivity(Intent(context, BoardListActivity::class.java).putExtra("category", idx))
     }
 
     companion object {
