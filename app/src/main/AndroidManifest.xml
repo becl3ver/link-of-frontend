@@ -5,9 +5,12 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
 
     <application
-        android:name=".App"
+        android:name=".base.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,13 +20,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LogisticsEstimate"
         tools:targetApi="31">
+        <activity
+            android:name=".view.activity.CBMActivity"
+            android:exported="false" />
 
         <service
-            android:name=".TerminationService"
-            android:stopWithTask="false"/>
+            android:name=".base.TerminationService"
+            android:stopWithTask="false" />
 
         <activity
-            android:name=".BoardViewActivity"
+            android:name=".view.activity.BoardViewActivity"
             android:exported="false" />
 
         <meta-data
@@ -31,37 +37,37 @@
             android:value="${GOOGLE_MAP_API_KEY}" />
 
         <activity
-            android:name=".TermActivity"
+            android:name=".view.activity.TermActivity"
             android:exported="false" />
         <activity
-            android:name=".ShipSearchActivity"
+            android:name=".view.activity.ShipTrackingActivity"
             android:exported="false" />
         <activity
-            android:name=".MyInfoActivity"
+            android:name=".view.activity.MyInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".PasswordResetActivity"
+            android:name=".view.activity.PasswordResetActivity"
             android:exported="false" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".view.activity.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".view.activity.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".NewBoardActivity"
+            android:name=".view.activity.NewBoardActivity"
             android:exported="false" />
         <activity
-            android:name=".BoardListActivity"
+            android:name=".view.activity.BoardListActivity"
             android:exported="false" />
         <activity
-            android:name=".TemporaryBoardActivity"
+            android:name=".view.activity.TemporaryBoardActivity"
             android:exported="false" />
         <activity
-            android:name=".LoadingActivity"
+            android:name=".view.activity.LoadingActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".base.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+    tools:context=".view.activity.SignUpActivity">
 
 
     <EditText
@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="30dp"
         android:backgroundTint="@color/main_blue"
         android:ems="20"
 
@@ -23,6 +23,7 @@
         android:textColor="@color/main_blue"
         android:textColorHint="@color/main_blue"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,9 +74,105 @@
         android:textStyle="bold"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_sign_in_et_nickname" />
+
+    <EditText
+        android:id="@+id/activity_sign_up_et_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/main_blue"
+        android:ems="20"
+
+        android:hint="@string/mail"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textColor="@color/main_blue"
+        android:textColorHint="@color/main_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_sign_up_btn_id_check" />
+
+    <Button
+        android:id="@+id/activity_sign_up_btn_mail_check"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="30dp"
+
+        android:background="@drawable/all_btn_round_edge"
+        android:text="@string/mail_send"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_sign_up_et_mail" />
+
+    <EditText
+        android:id="@+id/activity_sign_up_et_mail_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/main_blue"
+        android:ems="20"
+
+        android:hint="@string/mail_code"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textColor="@color/main_blue"
+        android:textColorHint="@color/main_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_btn_mail_check" />
+
+    <TextView
+        android:id="@+id/activity_sign_up_tv_timer_minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/main_blue"
+        android:textSize="14sp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+
+        app:layout_constraintTop_toBottomOf="@id/activity_sign_up_et_mail_code"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_sign_up_tv_timer_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/main_blue"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_et_mail_code"
+        app:layout_constraintStart_toEndOf="@+id/activity_sign_up_tv_timer_minute" />
+
+    <Button
+        android:id="@+id/activity_sign_up_btn_mail_code_check"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:enabled="false"
+
+        android:background="@drawable/all_btn_round_edge_disabled"
+        android:text="@string/mail_check"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/activity_sign_up_tv_timer_minute"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
         android:id="@+id/activity_sign_in_et_password"
@@ -94,7 +191,7 @@
         android:textColorHint="@color/main_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_sign_up_btn_id_check"/>
+        app:layout_constraintTop_toBottomOf="@id/activity_sign_up_btn_mail_code_check"/>
 
     <TextView
         android:id="@+id/activity_sign_in_tv_password"
@@ -149,15 +246,15 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="20dp"
+        android:enabled="false"
 
-        android:background="@drawable/all_btn_round_edge"
+        android:background="@drawable/all_btn_round_edge_disabled"
         android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="15sp"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 

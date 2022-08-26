@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/item_nested_comment_cl"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@drawable/all_bottom_stroke">
 
     <ImageView
         android:id="@+id/item_nested_comment_iv_arrow"
@@ -59,6 +60,4 @@
         android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/item_nested_comment_tv_date" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

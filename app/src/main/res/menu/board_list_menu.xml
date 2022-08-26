@@ -9,6 +9,6 @@
 
     <item android:id="@+id/menu_refresh"
         android:title="@string/refresh"
-        android:icon="@drawable/activity_post_list_ic_refresh_24"
+        android:icon="@drawable/activity_board_list_ic_refresh_24"
         app:showAsAction="always"/>
 </menu>

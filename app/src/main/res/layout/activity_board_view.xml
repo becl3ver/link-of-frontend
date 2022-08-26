@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BoardViewActivity">
+    tools:context=".view.activity.BoardViewActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activity_board_view_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/activity_board_view_et_new"
+        app:layout_constraintBottom_toTopOf="@id/activity_board_view_et_new_comment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,14 +18,14 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/activity_board_view_et_new"
+        android:id="@+id/activity_board_view_et_new_comment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/main_blue"
         android:ems="10"
         android:gravity="left"
 
-        android:hint="@string/post_content"
+        android:hint="@string/board_content"
         android:inputType="textMultiLine"
         android:textColor="@color/black"
         android:textColorHint="@color/black"

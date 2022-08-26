@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TermActivity">
+    tools:context=".view.activity.TermActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,16 +14,16 @@
         android:layout_margin="5dp">
 
         <EditText
-            android:id="@+id/termSearchEt"
+            android:id="@+id/activity_term_et_search"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:hint="검색어를 입력하세요."
+            android:hint="@string/input_keyword"
             android:imeOptions="actionSearch"
             android:singleLine="true"
             android:inputType="textNoSuggestions|textVisiblePassword"
             android:background="@drawable/et_background"
             android:textColor="@color/black"
-            android:textColorHint="@color/teal_200"
+            android:textColorHint="@color/translucent_blue"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,12 +31,9 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rc_view"
+        android:id="@+id/activity_term_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
-        />
-
-
+        android:background="?attr/selectableItemBackground" />
 </LinearLayout>
 

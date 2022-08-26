@@ -6,57 +6,82 @@
     android:id="@+id/item_board_cl"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@drawable/all_bottom_stroke">
 
     <TextView
-        android:id="@+id/item_post_tv_title"
+        android:id="@+id/item_board_tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/post_title"
+        android:text="@string/board_title"
         android:textSize="20sp"
         android:textColor="@color/main_blue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/item_post_iv_main"
+        app:layout_constraintEnd_toStartOf="@id/item_board_iv_main"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/item_post_tv_content"
+        android:id="@+id/item_board_tv_content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="내용"
         android:textSize="15sp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/item_post_iv_main"
-        app:layout_constraintTop_toBottomOf="@id/item_post_tv_title"/>
+        app:layout_constraintEnd_toStartOf="@id/item_board_iv_main"
+        app:layout_constraintTop_toBottomOf="@id/item_board_tv_title"/>
 
     <TextView
-        android:id="@+id/item_post_tv_date"
+        android:id="@+id/item_board_tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/date"
         android:textSize="15sp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_post_tv_content" />
+        app:layout_constraintTop_toBottomOf="@id/item_board_tv_content" />
 
     <TextView
-        android:id="@+id/item_post_tv_nickname"
+        android:id="@+id/item_board_tv_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="작성자"
         android:textSize="15sp"
         android:textColor="@color/black"
         android:layout_marginStart="20dp"
-        app:layout_constraintStart_toEndOf="@id/item_post_tv_date"
-        app:layout_constraintTop_toBottomOf="@id/item_post_tv_content"/>
-
+        app:layout_constraintStart_toEndOf="@id/item_board_tv_date"
+        app:layout_constraintTop_toBottomOf="@id/item_board_tv_content"/>
 
     <ImageView
-        android:id="@+id/item_post_iv_main"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:id="@+id/item_board_iv_main"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/all_ic_boat_24" />
+
+    <LinearLayout
+        android:id="@+id/item_board_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/item_board_tv_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/item_board_iv_recommend"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/all_ic_baseline_thumb_up_24" />
+
+        <TextView
+            android:id="@+id/item_board_tv_recommend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/sky_blue"
+            android:layout_marginLeft="5dp"
+            android:textSize="15sp"
+            android:text="0" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

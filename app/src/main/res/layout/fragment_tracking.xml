@@ -5,10 +5,10 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.TrackingFragment">
+    tools:context=".view.fragment.TrackingFragment">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/mmap"
+        android:id="@+id/fragment_tracking_map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

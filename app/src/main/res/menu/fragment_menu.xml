@@ -2,29 +2,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/select_main_screen"
-        app:showAsAction="always"
-        android:enabled="true"
-        android:title="Estimate"
+        android:icon="@drawable/all_ic_cbm_24"
+        android:title="견적"
         />
 
     <item
         android:id="@+id/select_tracking"
-        app:showAsAction="always"
-        android:enabled="true"
-        android:title="Tracking"
+        android:icon="@drawable/fragment_menu_tracking_24"
+        android:title="화물 위치"
         />
 
     <item
         android:id="@+id/select_community"
-        app:showAsAction="always"
-        android:enabled="true"
-        android:title="Community"
+        android:icon="@drawable/fragment_menu_ic_community_24"
+        android:title="커뮤니티"
         />
 
     <item
         android:id="@+id/select_my_page"
-        app:showAsAction="always"
-        android:enabled="true"
-        android:title="MyPage"
+        android:icon="@drawable/fragment_menu_ic_baseline_my_page_24"
+        android:title="마이 페이지"
         />
 </menu>

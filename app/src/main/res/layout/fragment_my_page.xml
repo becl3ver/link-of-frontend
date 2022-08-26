@@ -5,7 +5,7 @@
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.MyPageFragment">
+    tools:context=".view.fragment.MyPageFragment">
 
     <LinearLayout
         android:id="@+id/fragment_my_page_container1"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/fragment_my_page_btn1"
+            android:id="@+id/fragment_my_page_btn_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -35,7 +35,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/fragment_my_page_btn2"
+            android:id="@+id/fragment_my_page_btn_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -49,10 +49,10 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/fragment_my_page_tv_change_info"
+        android:id="@+id/fragment_my_page_tv_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/change_info"
+        android:text="@string/history"
         android:textColor="?colorPrimary"
         android:textStyle="bold"
 
@@ -72,30 +72,30 @@
         android:elevation="10dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_my_page_tv_change_info">
+        app:layout_constraintTop_toBottomOf="@id/fragment_my_page_tv_history">
 
         <Button
-            android:id="@+id/fragment_my_page_btn_setting"
+            android:id="@+id/fragment_my_page_btn_estimate_history"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:background="#00ff0000"
             android:gravity="center_vertical"
             android:paddingStart="20dp"
-            android:text="@string/setting"
+            android:text="@string/estimate_history"
             android:textColor="@color/main_blue"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/fragment_my_page_btn_alarm_setting"
+            android:id="@+id/fragment_my_page_btn_tracking_history"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:background="#00ff0000"
             android:gravity="center_vertical"
             android:paddingStart="20dp"
-            android:text="@string/alarm_setting"
+            android:text="@string/history"
             android:textColor="@color/main_blue"
             android:textSize="20sp"
             android:textStyle="bold" />

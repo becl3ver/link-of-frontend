@@ -9,9 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="green">#008000</color>
+    <color name="bright_yellow">#FFE9EC69</color>
+
     <color name="main_blue">#12196C</color>
     <color name="secondary_blue">#000555</color>
     <color name="translucent_blue">#8012196C</color>
-    <color name="bright_yellow">#FFE9EC69</color>
-    <color name="sky_blue">#FF50BCDF</color>
+    <color name="sky_blue">#5FA4D8</color>
 </resources>

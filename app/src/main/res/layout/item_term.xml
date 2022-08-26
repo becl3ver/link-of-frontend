@@ -7,28 +7,28 @@
     android:padding="4dp">
 
     <TextView
-        android:id="@+id/term_name"
+        android:id="@+id/item_term_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textStyle="bold"
         android:layout_marginLeft="5dp"
-        android:text="용어명"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textColor="@color/main_blue"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/term_content"
+        android:id="@+id/item_term_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="내용"
+        android:lineSpacingExtra="3dp"
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/term_name"/>
+        app:layout_constraintTop_toBottomOf="@+id/item_term_title"/>
 
     <View
         android:id="@+id/line"
@@ -36,7 +36,7 @@
         android:layout_height="1dp"
         android:layout_marginHorizontal="5dp"
         android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/term_content"
+        app:layout_constraintTop_toBottomOf="@id/item_term_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="#aaa" />

@@ -5,13 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_temporary_cl"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/item_temporary_tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/post_title"
+        android:text="@string/board_title"
         android:textSize="20sp"
         android:textColor="@color/main_blue"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +23,7 @@
         android:id="@+id/item_temporary_tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/post_content"
+        android:text="@string/board_content"
         android:textSize="15sp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
