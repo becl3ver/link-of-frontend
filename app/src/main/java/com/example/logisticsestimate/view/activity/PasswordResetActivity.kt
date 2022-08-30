@@ -28,7 +28,8 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
 
     private var isRunning = false
 
-    private var token: String? = null
+    private var authToken = ""
+    private var submitToken: String? = null
     private var timer: Timer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,8 +85,8 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
 
                 val call = AccountRetrofitClient.getInstance().identifyByEmail(EmailDto(email))
 
-                call.enqueue(object : Callback<String> {
-                    override fun onResponse(call: Call<String>, response: Response<String>) {
+                call.enqueue(object : Callback<EmailTokenDto> {
+                    override fun onResponse(call: Call<EmailTokenDto>, response: Response<EmailTokenDto>) {
                         if (!response.isSuccessful) {
                             Toast.makeText(
                                 this@PasswordResetActivity,
@@ -93,6 +94,7 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
                                 Toast.LENGTH_SHORT
                             ).show()
                         } else {
+                            authToken = response.body()!!.token
                             binding.activityPasswordResetBtnCheck.isEnabled = true
                             binding.activityPasswordResetBtnCheck.background =
                                 ContextCompat.getDrawable(
@@ -103,7 +105,7 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
                         }
                     }
 
-                    override fun onFailure(call: Call<String>, t: Throwable) {
+                    override fun onFailure(call: Call<EmailTokenDto>, t: Throwable) {
                         Toast.makeText(
                             this@PasswordResetActivity,
                             "연결에 실패했습니다.",
@@ -118,7 +120,7 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
             binding.activityPasswordResetBtnCheck.id -> {
                 val code = binding.activityPasswordResetEtCode.text.toString()
 
-                val call = AccountRetrofitClient.getInstance().identificationCode(CodeDto(code))
+                val call = AccountRetrofitClient.getInstance().identificationCode(authToken, CodeDto(code))
                 call.enqueue(object : Callback<EmailTokenDto> {
                     override fun onResponse(
                         call: Call<EmailTokenDto>,
@@ -131,7 +133,7 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
                                 Toast.LENGTH_SHORT
                             ).show()
                         } else {
-                            token = response.body()!!.token
+                            submitToken = response.body()!!.token
 
                             binding.activityPasswordResetBtnSubmit.isEnabled = true
                             binding.activityPasswordResetBtnSubmit.background =
@@ -168,7 +170,7 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
                 }
 
                 val call = AccountRetrofitClient.getInstance()
-                    .passwordReset(token!!, PasswordDto(password))
+                    .passwordReset(submitToken!!, PasswordDto(password))
                 call.enqueue(object : Callback<String> {
                     override fun onResponse(call: Call<String>, response: Response<String>) {
                         if (!response.isSuccessful) {
@@ -202,7 +204,7 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         return true
     }
 
@@ -236,7 +238,7 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
 
             runOnUiThread {
                 binding.activityPasswordResetTvTimerMinute.text = if(minutes > 0) "$minutes" else "0"
-                binding.activityPasswordResetTvTimerSecond.text = if(seconds < 10) ":0$seconds" else "$seconds"
+                binding.activityPasswordResetTvTimerSecond.text = if(seconds < 10) ":0$seconds" else ":$seconds"
             }
 
             if(time == 0) {

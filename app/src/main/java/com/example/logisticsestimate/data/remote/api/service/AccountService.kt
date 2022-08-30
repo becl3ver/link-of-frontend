@@ -13,7 +13,7 @@ import retrofit2.http.POST
 
 interface AccountService {
     @POST("/auth/account/sign_up")
-    fun signUp(@Header("token") token: String, @Body accountRequestDto: AccountRequestDto): Call<AccountResponseDto>
+    fun signUp(@Header("Authorization") token: String, @Body accountRequestDto: AccountRequestDto): Call<AccountResponseDto>
 
     @POST("/account/authenticate")
     fun signIn(@Body accountSignInDto: AccountSignInDto): Call<TokenDto>
@@ -22,24 +22,24 @@ interface AccountService {
     fun checkDuplication(@Body accountRequestDto: AccountRequestDto): Call<AccountResponseDto>
 
     @POST("/auth/account/withdrawal")
-    fun withdrawal(@Header("token") token: String, @Body accountSignInDto: AccountSignInDto): Call<Boolean>
+    fun withdrawal(@Header("Authorization") token: String, @Body accountSignInDto: AccountSignInDto): Call<Boolean>
 
     @POST("/auth/account/update")
-    fun updateAccount(@Header("token") token: String, @Body accountRequestDto: AccountRequestDto): Call<AccountResponseDto>
+    fun updateAccount(@Header("Authorization") token: String, @Body accountRequestDto: AccountRequestDto): Call<AccountResponseDto>
 
     @POST("/account/email")
-    fun checkEmail(@Body emailDto: EmailDto): Call<String>
+    fun checkEmail(@Body emailDto: EmailDto): Call<EmailTokenDto>
 
-    @POST("/account/email/code")
-    fun checkEmailCode(@Body codeDto: CodeDto): Call<EmailTokenDto>
+    @POST("/email-auth/account/email/code")
+    fun checkEmailCode(@Header("Authorization") token: String, @Body codeDto: CodeDto): Call<EmailTokenDto>
 
     @POST("/account/password/email")
-    fun identifyByEmail(@Body emailDto: EmailDto): Call<String>
+    fun identifyByEmail(@Body emailDto: EmailDto): Call<EmailTokenDto>
 
-    @POST("/account/password/email/code")
-    fun identificationCode(@Body codeDto: CodeDto): Call<EmailTokenDto>
+    @POST("/email-auth/account/password/email/code")
+    fun identificationCode(@Header("Authorization") token: String, @Body codeDto: CodeDto): Call<EmailTokenDto>
 
     @POST("/auth/password/reset")
-    fun passwordReset(@Header("token") token: String, @Body passwordDto: PasswordDto): Call<String>
+    fun passwordReset(@Header("Authorization") token: String, @Body passwordDto: PasswordDto): Call<String>
 
 }

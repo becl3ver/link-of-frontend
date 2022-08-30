@@ -6,5 +6,7 @@ package com.example.logisticsestimate.data.remote.model.login
 data class TokenDto(
     val uid: Long,
     val nickname: String,
-    val token: String
+    val token: String,
+    val name: String,
+    val email: String
     )

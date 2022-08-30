@@ -399,6 +399,7 @@
         android:textSize="20sp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:paddingStart="10dp"
 
         app:layout_constraintTop_toBottomOf="@id/activity_cbm_et_20ft"
         app:layout_constraintStart_toStartOf="@id/activity_cbm_guideline_1"
@@ -415,6 +416,7 @@
         android:textSize="20sp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:paddingStart="10dp"
 
         app:layout_constraintTop_toBottomOf="@id/activity_cbm_et_20ft"
         app:layout_constraintStart_toStartOf="@id/activity_cbm_guideline_2"
@@ -431,6 +433,7 @@
         android:textSize="20sp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:paddingStart="10dp"
 
         app:layout_constraintTop_toBottomOf="@id/activity_cbm_et_20ft"
         app:layout_constraintStart_toStartOf="@id/activity_cbm_guideline_3"
@@ -447,6 +450,7 @@
         android:textSize="20sp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:paddingStart="10dp"
 
         app:layout_constraintTop_toBottomOf="@id/activity_cbm_tv_1"
         app:layout_constraintStart_toStartOf="@id/activity_cbm_guideline_1"
@@ -463,6 +467,7 @@
         android:textSize="20sp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:paddingStart="10dp"
 
         app:layout_constraintTop_toBottomOf="@id/activity_cbm_tv_1"
         app:layout_constraintStart_toStartOf="@id/activity_cbm_guideline_2"
@@ -479,6 +484,7 @@
         android:textSize="20sp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:paddingStart="10dp"
 
         app:layout_constraintTop_toBottomOf="@id/activity_cbm_tv_1"
         app:layout_constraintStart_toStartOf="@id/activity_cbm_guideline_3"

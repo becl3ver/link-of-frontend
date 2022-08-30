@@ -81,29 +81,47 @@
         android:textColor="@color/white"
         android:textStyle="bold"
 
-        app:layout_constraintBottom_toTopOf="@+id/activity_sign_in_btn_find"
+        app:layout_constraintBottom_toTopOf="@+id/activity_sign_in_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_sign_in_cb_keep" />
 
-    <Button
-        android:id="@+id/activity_sign_in_btn_find"
+    <LinearLayout
+        android:id="@+id/activity_sign_in_container"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginTop="5dp"
-
-        android:background="@drawable/all_btn_round_edge"
-        android:text="@string/account_find"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_sign_in_btn_submit" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_in_btn_submit">
+
+        <Button
+            android:id="@+id/activity_sign_in_btn_find"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:text="@string/account_find"
+            android:textColor="@color/main_blue"
+            android:background="@color/white"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/activity_sign_in_btn_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:text="@string/sign_up"
+            android:textColor="@color/main_blue"
+            android:background="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

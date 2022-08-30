@@ -12,9 +12,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import com.example.logisticsestimate.*
-import com.example.logisticsestimate.view.activity.MyInfoActivity
 import com.example.logisticsestimate.view.activity.SignInActivity
-import com.example.logisticsestimate.view.activity.SignUpActivity
 import com.example.logisticsestimate.base.App
 import com.example.logisticsestimate.base.MainActivity
 import com.example.logisticsestimate.databinding.FragmentMyPageBinding
@@ -47,7 +45,11 @@ class MyPageFragment: Fragment() {
             setBtnSignedIn()
         }
 
-        binding.fragmentMyPageBtnTrackingHistory.setOnClickListener {
+        binding.fragmentMyPageBtnHistory.setOnClickListener {
+
+        }
+
+        binding.fragmentMyPageBtnUpdate.setOnClickListener {
 
         }
 
@@ -65,14 +67,10 @@ class MyPageFragment: Fragment() {
     }
 
     private fun setBtnSignedIn() {
-        binding.fragmentMyPageBtn1.text = getString(R.string.my_info)
-        binding.fragmentMyPageBtn2.text = getString(R.string.sign_out)
+        binding.fragmentMyPageBtn.text = getString(R.string.sign_out)
+        binding.fragmentMyPageContainer.visibility = View.VISIBLE
 
-        binding.fragmentMyPageBtn1.setOnClickListener {
-            startActivity(Intent(context, MyInfoActivity::class.java))
-        }
-
-        binding.fragmentMyPageBtn2.setOnClickListener {
+        binding.fragmentMyPageBtn.setOnClickListener {
             AlertDialog.Builder(requireActivity()).let {
                 it.setMessage("로그아웃 하시겠습니까?")
                 it.setPositiveButton("확인") { _, _ ->
@@ -92,16 +90,12 @@ class MyPageFragment: Fragment() {
     }
 
     private fun setBtnSignedOut() {
-        binding.fragmentMyPageBtn1.text = getString(R.string.sign_in)
-        binding.fragmentMyPageBtn2.text = getString(R.string.sign_up)
+        binding.fragmentMyPageBtn.text = getString(R.string.sign_in)
+        binding.fragmentMyPageContainer.visibility = View.GONE
 
-        binding.fragmentMyPageBtn1.setOnClickListener {
+        binding.fragmentMyPageBtn.setOnClickListener {
             val intent = Intent(context, SignInActivity::class.java)
             getResult.launch(intent)
-        }
-
-        binding.fragmentMyPageBtn2.setOnClickListener {
-            startActivity(Intent(context, SignUpActivity::class.java))
         }
     }
 }

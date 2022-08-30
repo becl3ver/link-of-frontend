@@ -77,12 +77,15 @@ class SignInActivity: AppCompatActivity() {
         }
 
         binding.activitySignInBtnFind.setOnClickListener {
-            val intent = Intent(applicationContext, PasswordResetActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, PasswordResetActivity::class.java))
+        }
+
+        binding.activitySignInBtnSignUp.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         return true
     }
 

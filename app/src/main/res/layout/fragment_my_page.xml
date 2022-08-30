@@ -7,97 +7,161 @@
     android:layout_height="match_parent"
     tools:context=".view.fragment.MyPageFragment">
 
-    <LinearLayout
-        android:id="@+id/fragment_my_page_container1"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/all_container_round_edge"
-        android:elevation="10dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/fragment_my_page_btn_1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:background="#00ff0000"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:text="@string/sign_in"
-            android:textColor="@color/main_blue"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/fragment_my_page_btn_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:background="#00ff0000"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:text="@string/sign_up"
-            android:textColor="@color/main_blue"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/fragment_my_page_btn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
 
-    <TextView
-        android:id="@+id/fragment_my_page_tv_history"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/history"
-        android:textColor="?colorPrimary"
-        android:textStyle="bold"
+                android:background="@drawable/all_btn_round_edge"
+                android:text="@string/sign_in"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_my_page_container1" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_my_page_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:padding="20dp"
+                android:background="@drawable/all_container_round_edge">
 
-    <LinearLayout
-        android:id="@+id/fragment_my_page_container2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/all_container_round_edge"
-        android:elevation="10dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_my_page_tv_history">
+                <TextView
+                    android:id="@+id/fragment_my_page_tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/main_blue"
+                    android:text="@string/name"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/fragment_my_page_btn_estimate_history"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:background="#00ff0000"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:text="@string/estimate_history"
-            android:textColor="@color/main_blue"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/fragment_my_page_tv_name_result"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:paddingStart="10dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/all_tv_round_edge"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_my_page_tv_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
-            android:id="@+id/fragment_my_page_btn_tracking_history"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:background="#00ff0000"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:text="@string/history"
-            android:textColor="@color/main_blue"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/fragment_my_page_tv_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/main_blue"
+                    android:text="@string/id"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_my_page_tv_name_result"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/fragment_my_page_tv_id_result"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:paddingStart="10dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/all_tv_round_edge"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_my_page_tv_id"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/fragment_my_page_tv_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/main_blue"
+                    android:text="@string/nickname"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_my_page_tv_id_result"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/fragment_my_page_tv_nickname_result"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:paddingStart="10dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/all_tv_round_edge"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_my_page_tv_nickname"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/fragment_my_page_tv_mail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/main_blue"
+                    android:text="@string/mail"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_my_page_tv_nickname_result"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/fragment_my_page_tv_mail_result"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:paddingStart="10dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/all_tv_round_edge"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_my_page_tv_mail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <Button
+                    android:id="@+id/fragment_my_page_btn_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+
+                    android:background="@drawable/all_btn_round_edge"
+                    android:text="@string/change_info"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_my_page_tv_mail_result"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/fragment_my_page_btn_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="30dp"
+
+                android:background="@drawable/all_btn_round_edge"
+                android:text="@string/history"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

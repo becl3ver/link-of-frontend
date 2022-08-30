@@ -214,7 +214,7 @@ class BoardViewActivity: AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         if(App.prefs.getUid() == boardData.uid) {
             menuInflater.inflate(R.menu.board_view_menu, menu)
         }

@@ -3,6 +3,7 @@ package com.example.logisticsestimate.view.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import com.example.logisticsestimate.utils.FreightCBMCalculator
 import com.example.logisticsestimate.R
 import com.example.logisticsestimate.databinding.ActivityCbmBinding
@@ -32,6 +33,12 @@ class CBMActivity: AppCompatActivity() {
             }
 
             val calculator = FreightCBMCalculator(length, width, height, weight, num, unit)
+
+            if(!calculator.checkAllRightInput()) {
+                Toast.makeText(this, "입력을 확인해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             binding.activityCbmTvCbmResult.text = calculator.cbmCalculator().toString()
 
             val resultTier1 = calculator.containerPerFreightOneFun()

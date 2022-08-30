@@ -99,7 +99,7 @@ class BoardListActivity: AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         if(category != 0 && !isSearched) {
             menuInflater.inflate(R.menu.board_list_menu, menu)
 
