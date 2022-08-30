@@ -37,6 +37,10 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
         binding = ActivityPasswordResetBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.all_ic_arrow_back)
+        supportActionBar!!.title = getString(R.string.password_find)
+
         binding.activityPasswordResetBtnSend.setOnClickListener(this)
         binding.activityPasswordResetBtnCheck.setOnClickListener(this)
         binding.activityPasswordResetBtnSubmit.setOnClickListener(this)
@@ -75,7 +79,6 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id) {
             binding.activityPasswordResetBtnSend.id -> {
-                startTimer()
                 val email = binding.activityPasswordResetEtMail.text.toString()
                 if (email == "") {
                     Toast.makeText(this@PasswordResetActivity, "메일 주소를 입력해주세요", Toast.LENGTH_SHORT)
@@ -88,11 +91,19 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
                 call.enqueue(object : Callback<EmailTokenDto> {
                     override fun onResponse(call: Call<EmailTokenDto>, response: Response<EmailTokenDto>) {
                         if (!response.isSuccessful) {
-                            Toast.makeText(
-                                this@PasswordResetActivity,
-                                "오류가 발생했습니다.",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            if(response.code() == 400) {
+                                Toast.makeText(
+                                    this@PasswordResetActivity,
+                                    "해당 이메일주소로 등록된 사용자가 존재하지 않습니다.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                Toast.makeText(
+                                    this@PasswordResetActivity,
+                                    "오류가 발생했습니다.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         } else {
                             authToken = response.body()!!.token
                             binding.activityPasswordResetBtnCheck.isEnabled = true

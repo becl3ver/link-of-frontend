@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
 
-            android:text="@string/account_find"
+            android:text="@string/password_find"
             android:textColor="@color/main_blue"
             android:background="@color/white"
             android:textStyle="bold" />

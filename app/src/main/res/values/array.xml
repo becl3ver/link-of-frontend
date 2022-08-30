@@ -5,4 +5,547 @@
         <item>IMO</item>
         <item>MMSI</item>
     </string-array>
+    <string-array name="annRuteNameList">
+        <item>구주</item>
+        <item>동남아</item>
+        <item>북미</item>
+        <item>서남아</item>
+        <item>아프리카</item>
+        <item>중남미</item>
+        <item>중동</item>
+        <item>지중해</item>
+        <item>한러</item>
+        <item>한일</item>
+        <item>한중</item>
+        <item>호주</item>
+    </string-array>
+    <string-array name="shippingPortNameList">
+        <item>AMBARLI</item>
+        <item>ANTWERPEN</item>
+        <item>BARCELONA</item>
+        <item>FELIXSTOWE</item>
+        <item>GENOVA</item>
+        <item>HAMBURG</item>
+        <item>HOBOKEN/NEW YORK, NJ</item>
+        <item>KORSAKOV</item>
+        <item>KRDAS</item>
+        <item>LE HAVRE</item>
+        <item>LONGBEACH</item>
+        <item>NORFOLK, NE</item>
+        <item>NOVOROSSIYSK</item>
+        <item>ROTTERDAM</item>
+        <item>SAINT PETERSBURG(EX LENINGRAD)</item>
+        <item>SAVANNAH, NY</item>
+        <item>SEATTLE</item>
+        <item>VALENCIA</item>
+        <item>VLADIVOSTOK</item>
+        <item>VOSTOCHNYY PORT</item>
+        <item>경인</item>
+        <item>광양</item>
+        <item>군산</item>
+        <item>대산</item>
+        <item>마산</item>
+        <item>부산</item>
+        <item>울산</item>
+        <item>인천</item>
+        <item>평택.당진</item>
+        <item>포항</item>
+    </string-array>
+    <string-array name="landingOrCodPortNameList">
+        <item>AARHUS</item>
+        <item>ACAJUTLA</item>
+        <item>ACAPULCO</item>
+        <item>AD DAMMAM</item>
+        <item>ADELAIDE</item>
+        <item>AKITA</item>
+        <item>ALGECIRAS</item>
+        <item>ALIAGA, IZMIR</item>
+        <item>ALTAMIRA</item>
+        <item>AMBARLI</item>
+        <item>ANCONA</item>
+        <item>ANTWERPEN</item>
+        <item>APAPA</item>
+        <item>AQABA (EL AKABA)</item>
+        <item>ARICA</item>
+        <item>ASUNCION</item>
+        <item>AUCKLAND</item>
+        <item>AUMEL</item>
+        <item>BAHIA BLANCA</item>
+        <item>BALBOA</item>
+        <item>BALIKPAPAN</item>
+        <item>BALTIMORE</item>
+        <item>BANGKOK</item>
+        <item>BANJARMASIN</item>
+        <item>BARCELONA</item>
+        <item>BARRANQUILLA</item>
+        <item>BASSETERRE, SAINT KITTS</item>
+        <item>BATAM ISLAND</item>
+        <item>BATANGAS/LUZON</item>
+        <item>BEIHAI</item>
+        <item>BEIJIAO</item>
+        <item>BEIRUT</item>
+        <item>BELAWAN, SUMATRA</item>
+        <item>BELIZE CITY</item>
+        <item>BINTULU, SARAWAK</item>
+        <item>BOGOTA</item>
+        <item>BOSTON, MA</item>
+        <item>BREMERHAVEN</item>
+        <item>BRISBANE</item>
+        <item>BUENAVENTURA</item>
+        <item>BUENOS AIRES</item>
+        <item>CAGAYAN DE ORO, MINDANAO</item>
+        <item>CALLAO</item>
+        <item>CANCUN</item>
+        <item>CAPE TOWN</item>
+        <item>CARTAGENA</item>
+        <item>CASTRIES</item>
+        <item>CAUCEDO</item>
+        <item>CEDO</item>
+        <item>CHANGSHA</item>
+        <item>CHANGSHU PT</item>
+        <item>CHARLESTON, SC</item>
+        <item>CHENNAI (EX MADRAS)</item>
+        <item>CHIBA</item>
+        <item>CHITTAGONG</item>
+        <item>CHIWAN PT</item>
+        <item>CHONGQING</item>
+        <item>CHRISTCHURCH</item>
+        <item>CINCINNATI</item>
+        <item>CLEVELAND, OH</item>
+        <item>CLLQN</item>
+        <item>CLSAI</item>
+        <item>CNBEC</item>
+        <item>CNDEQ</item>
+        <item>CNDMN</item>
+        <item>CNFQG</item>
+        <item>CNGMG</item>
+        <item>CNGNY</item>
+        <item>CNHGW</item>
+        <item>CNHTN</item>
+        <item>CNHU7</item>
+        <item>CNHWN</item>
+        <item>CNJXZ</item>
+        <item>CNLHS</item>
+        <item>CNMAF</item>
+        <item>CNNNS</item>
+        <item>CNNSS</item>
+        <item>CNPLW</item>
+        <item>CNPSA</item>
+        <item>CNSKU</item>
+        <item>CNSNB</item>
+        <item>CNSSO</item>
+        <item>CNSTN</item>
+        <item>CNSWG</item>
+        <item>CNSWN</item>
+        <item>CNTCG</item>
+        <item>CNWIO</item>
+        <item>CNWMO</item>
+        <item>CNXCT</item>
+        <item>CNXHI</item>
+        <item>CNXLN</item>
+        <item>CNXON</item>
+        <item>CNXTG</item>
+        <item>CNZCT</item>
+        <item>CNZHP</item>
+        <item>CNZQN</item>
+        <item>COCHIN</item>
+        <item>COLOMBO</item>
+        <item>COLON FREE ZONE</item>
+        <item>COLUMBUS, OH</item>
+        <item>CORINTO</item>
+        <item>CORONEL</item>
+        <item>DA NANG</item>
+        <item>DALIAN</item>
+        <item>DALLAS, NC</item>
+        <item>DAMMAN</item>
+        <item>DANDONG PT</item>
+        <item>DAVAO, MINDANAO</item>
+        <item>DUNEDIN</item>
+        <item>DURBAN</item>
+        <item>EASTCHICAGO</item>
+        <item>EL GUAMACHE</item>
+        <item>ENSENADA</item>
+        <item>FELIXSTOWE</item>
+        <item>FOSHAN</item>
+        <item>FOS-SUR-MER</item>
+        <item>FRANKFURT/ODER</item>
+        <item>FREMANTLE</item>
+        <item>FUKUYAMA, HIROSHIMA</item>
+        <item>FUQING</item>
+        <item>FUSHIKI</item>
+        <item>FUZHOU</item>
+        <item>GAOGANG</item>
+        <item>GAOLAN</item>
+        <item>GAOMING PT</item>
+        <item>GEBZE</item>
+        <item>GEMLIK, BURSA</item>
+        <item>GENOVA</item>
+        <item>GEORGETOWN, GRAND CAYMAN</item>
+        <item>GIOIA TAURO</item>
+        <item>GOTEBORG</item>
+        <item>GRANGEMOUTH</item>
+        <item>GUADALAJARA</item>
+        <item>GUANAJUATO</item>
+        <item>GUANGZHOU</item>
+        <item>GUANTA</item>
+        <item>GUANYAO</item>
+        <item>GUARANAO BAY</item>
+        <item>GUATEMALA CITY</item>
+        <item>GUAYAQUIL</item>
+        <item>HACHINOHE</item>
+        <item>HAIKOU</item>
+        <item>HAIPHONG</item>
+        <item>HAKATA/FUKUOKA</item>
+        <item>HALDIA</item>
+        <item>HAMAD</item>
+        <item>HAMADA</item>
+        <item>HAMBURG</item>
+        <item>HANOI</item>
+        <item>HELSINKI (HELSINGFORS)</item>
+        <item>HERMOSILLO</item>
+        <item>HESHAN PT</item>
+        <item>HIBIKINADA, FUKUOKA</item>
+        <item>HIROSHIMA</item>
+        <item>HITACHINAKA</item>
+        <item>HO CHI MINH CITY</item>
+        <item>HO CHI MINH, VICT</item>
+        <item>HOBART</item>
+        <item>HOBOKEN/NEW YORK, NJ</item>
+        <item>HONG KONG</item>
+        <item>HOSOSHIMA</item>
+        <item>HOUSTON, TX</item>
+        <item>HUADU PT</item>
+        <item>HUANGPU NEW PORT</item>
+        <item>HUANGPU PT</item>
+        <item>HUIZHOU (CODE CHANGE CN HUI)</item>
+        <item>HULUDAO PT</item>
+        <item>HUMEN PT</item>
+        <item>IDPJN</item>
+        <item>IMABARI</item>
+        <item>IMARI</item>
+        <item>INVIZ</item>
+        <item>IQUIQUE</item>
+        <item>ISHIKARI</item>
+        <item>ISHIKARIWAN-SHINKO, HOKKAIDO</item>
+        <item>ITAJAI</item>
+        <item>ITAPOA</item>
+        <item>IWAKUNI</item>
+        <item>IYOMISHIMA</item>
+        <item>JACKSONVILLE, FL</item>
+        <item>JAKARTA, JAVA</item>
+        <item>JAMBI, SUMATRA</item>
+        <item>JAWAHARLAL NEHRU (NHAVA SHEVA)</item>
+        <item>JEBEL ALI</item>
+        <item>JEDDAH</item>
+        <item>JIANGMEN PT</item>
+        <item>JIANGYIN PT</item>
+        <item>JIUJIANG</item>
+        <item>JIUJIANG PT</item>
+        <item>JPHKP</item>
+        <item>JPOIP</item>
+        <item>KAMAISHI</item>
+        <item>KANAZAWA</item>
+        <item>KAOHSIUNG</item>
+        <item>KARACHI</item>
+        <item>KARACHI CONTAINER TERMINAL</item>
+        <item>KAWASAKI</item>
+        <item>KEELUNG (CHILUNG)</item>
+        <item>KINGSTON</item>
+        <item>KOBE</item>
+        <item>KOCHI</item>
+        <item>KOLKATA (EX CALCUTTA)</item>
+        <item>KOPER</item>
+        <item>KORSAKOV</item>
+        <item>KOTA KINABALU, SABAH</item>
+        <item>KOZA</item>
+        <item>KUCHING, SARAWAK</item>
+        <item>KUMAMOTO</item>
+        <item>KUSHIRO</item>
+        <item>LA GUAIRA</item>
+        <item>LA SPEZIA</item>
+        <item>LABUAN HADJI, SABAH</item>
+        <item>LAEM CHABANG</item>
+        <item>LAHAD DATU, SABAH</item>
+        <item>LANSHI</item>
+        <item>LAT KRABANG</item>
+        <item>LAZARO CARDENAS</item>
+        <item>LE HAVRE</item>
+        <item>LELIU</item>
+        <item>LIANHUASHAN PT</item>
+        <item>LIANYUNGANG</item>
+        <item>LIDAO</item>
+        <item>LIMA</item>
+        <item>LONDON GATEWAY PORT</item>
+        <item>LONG YAN</item>
+        <item>LONGBEACH</item>
+        <item>LOSANGELES</item>
+        <item>LUANDA</item>
+        <item>LYTTELTON</item>
+        <item>MACAU</item>
+        <item>MADRID</item>
+        <item>MAIZURU</item>
+        <item>MANAGUA</item>
+        <item>MANAUS</item>
+        <item>MANILA</item>
+        <item>MANILA NORTH HARBOUR</item>
+        <item>MANILA SOUTH HARBOUR</item>
+        <item>MANZANILLO</item>
+        <item>MARACAIBO</item>
+        <item>MARIEL</item>
+        <item>MARPORT</item>
+        <item>MATSUYAMA</item>
+        <item>MAWAN PT</item>
+        <item>MAWEI PT</item>
+        <item>MAZATLAN</item>
+        <item>MELBOURNE</item>
+        <item>MEMPHIS</item>
+        <item>MENDOZA</item>
+        <item>MERAK, JAVA</item>
+        <item>MERIDA</item>
+        <item>MEXICALI</item>
+        <item>MEXICO CITY</item>
+        <item>MIAMI, FL</item>
+        <item>MIIKE, FUKUOKA</item>
+        <item>MIRI, SARAWAK</item>
+        <item>MISHIMA, KAWANOE</item>
+        <item>MIZUSHIMA</item>
+        <item>MOIN BAY (PUERTO LIMON)</item>
+        <item>MOJI/KITAKYUSHU</item>
+        <item>MONTERREY</item>
+        <item>MONTEVIDEO</item>
+        <item>MUHAMMAD BIN QASIM/KARACHI</item>
+        <item>MUNDRA</item>
+        <item>MURORAN</item>
+        <item>MYPKW</item>
+        <item>NAGASAKI</item>
+        <item>NAGOYA, AICHI</item>
+        <item>NAHA, OKINAWA</item>
+        <item>NANHAI PT</item>
+        <item>NANJING</item>
+        <item>NANNING</item>
+        <item>NANSHA PT</item>
+        <item>NANTONG PT</item>
+        <item>NAOETSU</item>
+        <item>NAPIER</item>
+        <item>NAPOLI</item>
+        <item>NASSAU</item>
+        <item>NELSON</item>
+        <item>NEWYORK</item>
+        <item>NHAVE</item>
+        <item>NIIGATA</item>
+        <item>NIIGATAHIGASHI</item>
+        <item>NINGBO</item>
+        <item>NORFOLK, NE</item>
+        <item>NORFOLK, VA</item>
+        <item>NOVOROSSIYSK</item>
+        <item>OAKLAND, CA</item>
+        <item>OITA</item>
+        <item>ONAHAMA</item>
+        <item>ORANJESTAD</item>
+        <item>OSAKA</item>
+        <item>OTAKE</item>
+        <item>PAITA</item>
+        <item>PALEMBANG, SUMATRA</item>
+        <item>PALU</item>
+        <item>PANJANG</item>
+        <item>PARANAGUA</item>
+        <item>PASIR GUDANG, JOHOR</item>
+        <item>PECEM</item>
+        <item>PENANG (GEORGETOWN)</item>
+        <item>PHNOM PENH</item>
+        <item>PIPAVAV (VICTOR) PORT</item>
+        <item>PKKHS</item>
+        <item>POINT LISAS</item>
+        <item>POINTE NOIRE</item>
+        <item>PONTIANAK, KALIMANTAN</item>
+        <item>PORT CHALMERS</item>
+        <item>PORT ELIZABETH</item>
+        <item>PORT SAID</item>
+        <item>PORT-AU-PRINCE</item>
+        <item>PORTKELANG</item>
+        <item>PORTO DE ITAGUAI</item>
+        <item>PRAHA</item>
+        <item>PRINCE RUPERT</item>
+        <item>PROGRESO</item>
+        <item>PROVIDENCIALES</item>
+        <item>PUEBLA</item>
+        <item>PUERTO ANAGAMOS</item>
+        <item>PUERTO CABELLO</item>
+        <item>PUERTO CORTES</item>
+        <item>PUERTO DESEADO</item>
+        <item>PUERTO MADRYN</item>
+        <item>PUERTO MORELOS</item>
+        <item>PUERTO QUETZAL</item>
+        <item>PUERTO SANTO TOMAS DE CASTILLA</item>
+        <item>QINGDAO</item>
+        <item>QUINGYUAN</item>
+        <item>QINHUANGDAO PT</item>
+        <item>QINZHOU PT</item>
+        <item>QUERETARO</item>
+        <item>QUI NHON</item>
+        <item>RAVENNA</item>
+        <item>RIJEKA</item>
+        <item>RIO DE JANEIRO</item>
+        <item>RIO GRANDE</item>
+        <item>RIO HAINA</item>
+        <item>RIZHAO PT</item>
+        <item>ROAD TOWN, TORTOLA</item>
+        <item>RONGCHENG</item>
+        <item>RONGQI PT</item>
+        <item>ROSARIO</item>
+        <item>ROSEAU</item>
+        <item>ROTTERDAM</item>
+        <item>SAINT GEORGE\'S</item>
+        <item>SAINT PETERSBURG(EX LENINGRAD)</item>
+        <item>SAKAIMINATO</item>
+        <item>SAKATA</item>
+        <item>SALTILLO</item>
+        <item>SALVADOR</item>
+        <item>SAMARINDA, KALIMANTAN</item>
+        <item>SAN ANTONIO</item>
+        <item>SAN JOSE</item>
+        <item>SAN PEDRO SULA</item>
+        <item>SAN SALVADOR</item>
+        <item>SAN VICENTE</item>
+        <item>SANDAKAN, SABAH</item>
+        <item>SANSHAN</item>
+        <item>SANSHAN PT</item>
+        <item>SANSHUI</item>
+        <item>SANTA ANA</item>
+        <item>SANTA MARTA</item>
+        <item>SANTIAGO</item>
+        <item>SANTO DOMINGO</item>
+        <item>SANTOS</item>
+        <item>SATSUMASENDAI</item>
+        <item>SAVANNAH, GA</item>
+        <item>SAVANNAH, NY</item>
+        <item>SEATTLE</item>
+        <item>SEMARANG</item>
+        <item>SENDAI, MIYAGI</item>
+        <item>SENDAISHIOGAMA</item>
+        <item>SHANGHAI</item>
+        <item>SHANTOU</item>
+        <item>SHATING</item>
+        <item>SHEKOU PT</item>
+        <item>SHIBUSHI</item>
+        <item>SHIJINGJIAOXIN</item>
+        <item>SHIMIZU</item>
+        <item>SHIMONOSEKI</item>
+        <item>SHUNDE PT</item>
+        <item>SIBU, SARAWAK</item>
+        <item>SIHANOUKVILLE</item>
+        <item>SINGAPORE</item>
+        <item>SOHAR</item>
+        <item>SOKHNA PORT</item>
+        <item>SUAPE</item>
+        <item>SUBIC BAY</item>
+        <item>SURABAYA</item>
+        <item>SYDNEY</item>
+        <item>TACOMA</item>
+        <item>TAICANG</item>
+        <item>TAICHUNG</item>
+        <item>TAIPEI</item>
+        <item>TAKAMATSU</item>
+        <item>TAMPICO</item>
+        <item>TARAKAN, KALIMANTAN</item>
+        <item>TAURANGA</item>
+        <item>TAWAU, SABAH</item>
+        <item>TEGUCIGALPA</item>
+        <item>THLKA</item>
+        <item>TIANJIN</item>
+        <item>TIANJIN XINGANG PT</item>
+        <item>TIMARU</item>
+        <item>TLAXCALA</item>
+        <item>TOBATA, FUKUOKA</item>
+        <item>TOKUSHIMA</item>
+        <item>TOKUYAMA</item>
+        <item>TOKYO</item>
+        <item>TOLUCA</item>
+        <item>TOMAKOMAI</item>
+        <item>TOWNSVILLE</item>
+        <item>TOYAMASHINKO</item>
+        <item>TOYOHASHI</item>
+        <item>TRIESTE</item>
+        <item>TSURUGA</item>
+        <item>TURBO</item>
+        <item>TUTICORIN</item>
+        <item>TWSHU</item>
+        <item>TWTNY</item>
+        <item>UJUNG PANDANG, SULAWESI</item>
+        <item>USHUAIA</item>
+        <item>VALENCIA</item>
+        <item>VALPARAISO</item>
+        <item>VANCOUVER</item>
+        <item>VENEZIA</item>
+        <item>VERACRUZ</item>
+        <item>VILA DO CONDE</item>
+        <item>VILLETA</item>
+        <item>VISAKHAPATNAM</item>
+        <item>VITORIA</item>
+        <item>VLADIVOSTOK</item>
+        <item>VNCLP</item>
+        <item>VNPC3</item>
+        <item>VNPCL</item>
+        <item>VNTCT</item>
+        <item>VNVCT</item>
+        <item>VOSTOCHNYY PORT</item>
+        <item>VOSTOKMORSERVICE</item>
+        <item>VUNG TAU</item>
+        <item>WAIHAI</item>
+        <item>WEIHAI</item>
+        <item>WEITOU</item>
+        <item>WELLINGTON</item>
+        <item>WENZHOU</item>
+        <item>WILHELMSHAVEN</item>
+        <item>WILLEMSTAD</item>
+        <item>WILMINGTON, NC</item>
+        <item>WUHAN</item>
+        <item>WUZHOU PT</item>
+        <item>XIAMEN</item>
+        <item>XIANGZHOU</item>
+        <item>XIAOLAN</item>
+        <item>XINFENG</item>
+        <item>XINGANG</item>
+        <item>XINHUI PT</item>
+        <item>YANGON</item>
+        <item>YANGPU PT</item>
+        <item>YANGSHAN</item>
+        <item>YANTAI</item>
+        <item>YANTIAN PT</item>
+        <item>YARIMCA, KOCAELI</item>
+        <item>YATSUSHIRO</item>
+        <item>YOKKAICHI</item>
+        <item>YOKOHAMA</item>
+        <item>YONGTAI</item>
+        <item>ZARATE</item>
+        <item>ZHANGJIAGANG</item>
+        <item>ZHANJIANG</item>
+        <item>ZHAOQING PT</item>
+        <item>ZHENGZHOU</item>
+        <item>ZHONGSHAN PT</item>
+        <item>ZHUHAI PT</item>
+        <item>부산</item>
+    </string-array>
+    <string-array name="contnOwnSeNameList">
+        <item>선사소유 컨테이너(COC)</item>
+        <item>화주소유 컨테이너(SOC)</item>
+    </string-array>
+    <string-array name="contnCndNameList">
+        <item>dry</item>
+        <item>reefer</item>
+        <item>tank</item>
+        <item>기타</item>
+    </string-array>
+    <string-array name="freightNameList">
+        <item>공컨테이너</item>
+        <item>냉동냉장화물</item>
+        <item>위험물류</item>
+        <item>일반화물</item>
+        <item>화학제품류</item>
+        <item>기타</item>
+    </string-array>
+    <string-array name="tnSpotSeNameList">
+        <item>TEU</item>
+        <item>R/T</item>
+    </string-array>
 </resources>

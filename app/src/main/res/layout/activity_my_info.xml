@@ -6,4 +6,299 @@
     android:layout_height="match_parent"
     tools:context=".view.activity.MyInfoActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/activity_my_info_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="14sp"
+                android:textColor="?colorPrimary"
+                android:textStyle="bold"
+
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="35dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <EditText
+                android:id="@+id/activity_my_info_et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/main_blue"
+                android:ems="20"
+
+                android:hint="@string/name"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textColor="@color/main_blue"
+                android:textColorHint="@color/main_blue"
+                app:layout_constraintTop_toBottomOf="@+id/activity_my_info_tv_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/activity_my_info_tv_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/id"
+                android:textSize="14sp"
+                android:textColor="?colorPrimary"
+                android:textStyle="bold"
+
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="35dp"
+                app:layout_constraintTop_toBottomOf="@+id/activity_my_info_et_name"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/activity_my_info_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/main_blue"
+                android:ems="20"
+
+                android:hint="@string/id"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textColor="@color/main_blue"
+                android:textColorHint="@color/main_blue"
+                app:layout_constraintTop_toBottomOf="@+id/activity_my_info_tv_id"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/activity_my_info_tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nickname"
+                android:textSize="14sp"
+                android:textColor="?colorPrimary"
+                android:textStyle="bold"
+
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="35dp"
+                app:layout_constraintTop_toBottomOf="@+id/activity_my_info_et_id"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/activity_my_info_et_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/main_blue"
+                android:ems="20"
+
+                android:hint="@string/nickname"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textColor="@color/main_blue"
+                android:textColorHint="@color/main_blue"
+                app:layout_constraintTop_toBottomOf="@+id/activity_my_info_tv_nickname"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/activity_my_info_btn_id_check"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+
+                android:background="@drawable/all_btn_round_edge"
+                android:text="@string/duplication_check"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/activity_my_info_et_nickname"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/activity_my_info_btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+
+                android:enabled="false"
+                android:background="@drawable/all_btn_round_edge_disabled"
+                android:text="@string/change_submit"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/activity_my_info_btn_id_check"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/activity_my_info_tv_current_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password_check"
+                android:textSize="14sp"
+                android:textColor="?colorPrimary"
+                android:textStyle="bold"
+
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="35dp"
+                app:layout_constraintTop_toBottomOf="@+id/activity_my_info_btn_submit"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/activity_my_info_et_current_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/main_blue"
+                android:ems="20"
+
+                android:hint="@string/current_password"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:textColor="@color/main_blue"
+                android:textColorHint="@color/main_blue"
+                app:layout_constraintTop_toBottomOf="@+id/activity_my_info_tv_current_password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <Button
+                android:id="@+id/activity_my_info_btn_current_password"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+
+                android:background="@drawable/all_btn_round_edge"
+                android:text="@string/password_check"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_my_info_et_current_password" />
+
+            <TextView
+                android:id="@+id/activity_my_info_tv_password_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password_update"
+                android:textSize="14sp"
+                android:textColor="?colorPrimary"
+                android:textStyle="bold"
+
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="35dp"
+                app:layout_constraintTop_toBottomOf="@id/activity_my_info_btn_current_password"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <EditText
+                android:id="@+id/activity_my_info_et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/main_blue"
+                android:ems="20"
+
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:textColor="@color/main_blue"
+                android:textColorHint="@color/main_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_my_info_tv_password_update"/>
+
+            <TextView
+                android:id="@+id/activity_my_info_tv_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+
+                android:textSize="15sp"
+                android:textColor="@color/red"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_my_info_et_password"/>
+
+            <EditText
+                android:id="@+id/activity_my_info_et_password_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="@color/main_blue"
+                android:ems="20"
+
+                android:hint="@string/password_check"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:textColor="@color/main_blue"
+                android:textColorHint="@color/main_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_my_info_tv_password"/>
+
+            <TextView
+                android:id="@+id/activity_my_info_tv_password_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+
+                android:textSize="15sp"
+                android:textColor="@color/red"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_my_info_et_password_check"/>
+
+            <Button
+                android:id="@+id/activity_my_info_tv_btn_submit_password"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:enabled="false"
+
+                android:background="@drawable/all_btn_round_edge_disabled"
+                android:text="@string/password_update"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_my_info_tv_password_check" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,6 +29,10 @@
             android:stopWithTask="false" />
 
         <activity
+            android:name=".view.activity.EstimateActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".view.activity.BoardViewActivity"
             android:exported="false" />
 

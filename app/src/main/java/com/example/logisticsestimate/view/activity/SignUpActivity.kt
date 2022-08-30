@@ -40,19 +40,19 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.all_ic_arrow_back)
 
-        binding.activitySignInEtId.text.isEmpty()
+        binding.activitySignUpEtId.text.isEmpty()
 
         binding.activitySignUpBtnIdCheck.setOnClickListener(this)
         binding.activitySignUpBtnMailCheck.setOnClickListener(this)
         binding.activitySignUpBtnMailCodeCheck.setOnClickListener(this)
         binding.activitySignUpBtnSubmit.setOnClickListener(this)
 
-        binding.activitySignInEtId.addTextChangedListener(object: TextWatcher {
+        binding.activitySignUpEtId.addTextChangedListener(object: TextWatcher {
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if(isSafe(1, s.toString())) {
-                    binding.activitySignInTvId.text = ""
+                    binding.activitySignUpTvId.text = ""
                 } else {
-                    binding.activitySignInTvId.text = "ID는 5 ~ 20자의 영소문자, 숫자로 이루어져야 합니다. "
+                    binding.activitySignUpTvId.text = "ID는 5 ~ 20자의 영소문자, 숫자로 이루어져야 합니다. "
                 }
             }
 
@@ -60,18 +60,18 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
             override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
 
-        binding.activitySignInEtNickname.addTextChangedListener(object : TextWatcher {
+        binding.activitySignUpEtNickname.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
 
-        binding.activitySignInEtPassword.addTextChangedListener(object: TextWatcher {
+        binding.activitySignUpEtPassword.addTextChangedListener(object: TextWatcher {
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 val length = s.toString().length
 
-                binding.activitySignInTvPassword.text =
+                binding.activitySignUpTvPassword.text =
                     if (length < 8 || length > 20) "비밀번호는 8 ~ 20자로 이루어져야 합니다."
                     else if (isSafe(2, s.toString())) ""
                     else "영문, 숫자, 특수문자를 하나씩 포함해야 합니다."
@@ -81,14 +81,14 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
             override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
 
-        binding.activitySignInEtPasswordCheck.addTextChangedListener(object: TextWatcher {
+        binding.activitySignUpEtPasswordCheck.addTextChangedListener(object: TextWatcher {
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if(binding.activitySignInEtPassword.text.toString() == s.toString()) {
-                    binding.activitySignInTvPasswordCheck.text = "비밀번호가 일치합니다."
-                    binding.activitySignInTvPasswordCheck.setTextColor(getColor(R.color.green))
+                if(binding.activitySignUpEtPassword.text.toString() == s.toString()) {
+                    binding.activitySignUpTvPasswordCheck.text = "비밀번호가 일치합니다."
+                    binding.activitySignUpTvPasswordCheck.setTextColor(getColor(R.color.green))
                 } else {
-                    binding.activitySignInTvPasswordCheck.text = "비밀번호가 일치하지 않습니다."
-                    binding.activitySignInTvPasswordCheck.setTextColor(getColor(R.color.red))
+                    binding.activitySignUpTvPasswordCheck.text = "비밀번호가 일치하지 않습니다."
+                    binding.activitySignUpTvPasswordCheck.setTextColor(getColor(R.color.red))
                 }
             }
 
@@ -100,8 +100,8 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id) {
             binding.activitySignUpBtnIdCheck.id -> {
-                val id = binding.activitySignInEtId.text.toString()
-                val nickname = binding.activitySignInEtNickname.text.toString()
+                val id = binding.activitySignUpEtId.text.toString()
+                val nickname = binding.activitySignUpEtNickname.text.toString()
 
                 if(!isSafe(1, id)) {
                     Toast.makeText(this, "ID를 확인해주세요.", Toast.LENGTH_SHORT).show()
@@ -124,14 +124,14 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
                                 "nickname" -> "이미 사용 중인 닉네임입니다."
                                 else -> {
                                     isDuplicationChecked = true
-                                    binding.activitySignUpBtnIdCheck.isEnabled = true
+                                    binding.activitySignUpEtId.isEnabled = false
+                                    binding.activitySignUpEtNickname.isEnabled = false
+                                    binding.activitySignUpBtnIdCheck.isEnabled = false
                                     binding.activitySignUpBtnIdCheck.background =
                                         ContextCompat.getDrawable(
                                             this@SignUpActivity,
                                             R.drawable.all_btn_round_edge_disabled
                                         )
-                                    binding.activitySignInEtId.isEnabled = false
-                                    binding.activitySignInEtNickname.isEnabled = false
                                     "사용 가능한 ID와 닉네임입니다."
                                 }
                             }
@@ -143,7 +143,7 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
 
                     override fun onFailure(call: Call<AccountResponseDto>, t: Throwable) {
                         Toast.makeText(this@SignUpActivity, "연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
-                        Log.d("http", t.message ?: "onFailure")
+                        Log.d("http", "onFailure : " + t.message)
                     }
                 })
             }
@@ -191,6 +191,12 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
                             submitToken = "Bearer " + response.body()!!.token
                             binding.activitySignUpTvTimerMinute.text = ""
                             binding.activitySignUpTvTimerSecond.text = "인증이 완료되었습니다."
+                            binding.activitySignUpBtnMailCodeCheck.isEnabled = false
+                            binding.activitySignUpBtnMailCodeCheck.background =
+                                ContextCompat.getDrawable(
+                                    this@SignUpActivity,
+                                    R.drawable.all_btn_round_edge_disabled
+                                )
                             timer?.cancel()
                             checkSubmitButton()
                         }
@@ -204,17 +210,17 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
             }
 
             binding.activitySignUpBtnSubmit.id -> {
-                val id = binding.activitySignInEtId.text.toString()
-                val name = binding.activitySignInEtName.text.toString()
-                val password = binding.activitySignInEtPassword.text.toString()
-                val nickname = binding.activitySignInEtNickname.text.toString()
+                val id = binding.activitySignUpEtId.text.toString()
+                val name = binding.activitySignUpEtName.text.toString()
+                val password = binding.activitySignUpEtPassword.text.toString()
+                val nickname = binding.activitySignUpEtNickname.text.toString()
 
                 if(!isSafe(2, password)) {
                     Toast.makeText(this, "비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show()
                     return
                 }
 
-                if(password != binding.activitySignInTvPasswordCheck.toString()) {
+                if(password != binding.activitySignUpEtPasswordCheck.text.toString()) {
                     Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
                     return
                 }
@@ -224,7 +230,7 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
                     return
                 }
 
-                val request = AccountRequestDto(id, "", password, nickname)
+                val request = AccountRequestDto(id, name, password, nickname)
                 val call = AccountRetrofitClient.getInstance().signUp(submitToken!!, request)
 
                 call.enqueue(object: Callback<AccountResponseDto> {

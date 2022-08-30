@@ -46,16 +46,19 @@ class SignInActivity: AppCompatActivity() {
                     response: Response<TokenDto>
                 ) {
                     if(!response.isSuccessful) {
-                        Toast.makeText(this@SignInActivity, "연결이 비정상적입니다.", Toast.LENGTH_SHORT).show()
-                        return;
+                        if(response.code() == 401) {
+                            Toast.makeText(
+                                this@SignInActivity,
+                                "ID/PW를 확인해주세요.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            Toast.makeText(this@SignInActivity, "연결이 비정상적입니다.", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     } else {
-                        App.prefs.removeAccessToken()
-                        App.prefs.removeUid()
-                        App.prefs.removeNickname()
-
-                        App.prefs.setAccessToken(response.body()!!.token)
-                        App.prefs.setUid(response.body()!!.uid)
-                        App.prefs.setNickname(response.body()!!.nickname)
+                        App.prefs.removeLoginData()
+                        App.prefs.setLoginData(response.body()!!)
 
                         if(binding.activitySignInCbKeep.isChecked) {
                             App.prefs.setString("id", id)

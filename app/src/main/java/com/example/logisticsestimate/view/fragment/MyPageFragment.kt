@@ -16,6 +16,7 @@ import com.example.logisticsestimate.view.activity.SignInActivity
 import com.example.logisticsestimate.base.App
 import com.example.logisticsestimate.base.MainActivity
 import com.example.logisticsestimate.databinding.FragmentMyPageBinding
+import com.example.logisticsestimate.view.activity.MyInfoActivity
 
 /**
  * 로그인, 로그아웃, 앱 설정, 유저 정보를 조회
@@ -50,7 +51,7 @@ class MyPageFragment: Fragment() {
         }
 
         binding.fragmentMyPageBtnUpdate.setOnClickListener {
-
+            startActivity(Intent(context, MyInfoActivity::class.java))
         }
 
         return binding.root
