@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="20dp"
-            android:text="총 운임 비용"
+            android:text="@string/totalCost"
 
             android:textColor="?colorPrimary"
             android:textStyle="bold"
@@ -45,7 +45,7 @@
             android:id="@+id/activity_estimate_tv_exchangeNotice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="환율 안내"
+            android:text=""
             android:textSize="12sp"
             android:textColor="@color/red"
 
@@ -62,8 +62,7 @@
             app:layout_constraintEnd_toEndOf="parent"
 
             android:paddingStart="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginEnd="10dp">
 
             <TextView
                 android:id="@+id/activity_estimate_tv_cychgOf"
@@ -71,13 +70,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
-                android:text="운임 OF"
+                android:text="@string/cychgOf"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
 
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_estimate_tv_resultTotalCost" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/activity_estimate_tv_resultCychgOf"
@@ -103,13 +102,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
-                android:text="운임 BAF"
+                android:text="@string/cychgBaf"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
 
                 app:layout_constraintStart_toStartOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/activity_estimate_tv_resultTotalCost" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/activity_estimate_tv_resultCychgBaf"
@@ -135,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
-                android:text="운임 CAF"
+                android:text="@string/cychgCaf"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -167,7 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
-                android:text="운임 LSS"
+                android:text="@string/cychgLss"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -200,7 +199,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
-                android:text="운임 EBS"
+                android:text="@string/cychgEbs"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -232,7 +231,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
-                android:text="운임 OTHC"
+                android:text="@string/cychgOthc"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -264,7 +263,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
-                android:text="운임 DTHC"
+                android:text="@string/cychgDthc"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -295,7 +294,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="20dp"
-                android:text="서류 발급비"
+                android:text="@string/cychgDf"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -327,7 +326,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
-                android:text="화물 인도 지시서 요금"
+                android:text="@string/cychgDo"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -359,7 +358,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
-                android:text="부두 사용료"
+                android:text="@string/cychgWaf"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -390,7 +389,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
-                android:text="컨테이너 봉인료"
+                android:text="@string/cychgSc"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -422,7 +421,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
-                android:text="운임 기타"
+                android:text="@string/cychgEtc"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -445,10 +444,9 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
 
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_estimate_tv_cychgEtc"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/activity_estimate_tv_cychgEtc" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"

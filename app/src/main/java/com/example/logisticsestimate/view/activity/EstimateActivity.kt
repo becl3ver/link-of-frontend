@@ -2,6 +2,8 @@ package com.example.logisticsestimate.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.example.logisticsestimate.BuildConfig
 import com.example.logisticsestimate.BuildConfig.EXCHANGE_API_KEY
@@ -25,10 +27,11 @@ import java.util.*
 import kotlin.math.floor
 import kotlin.math.round
 
+/**
+ * 사용자가 입력한 정보를 바탕으로 화물 견적 계산
+ */
 class EstimateActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityEstimateBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,8 +71,6 @@ class EstimateActivity : AppCompatActivity() {
                 if (!response.isSuccessful) {
                     Toast.makeText(context, "환율 API 로드에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(context, "환율 API를 성공적으로 연동했습니다.", Toast.LENGTH_SHORT).show()
-
                     val resultExchange = response.body()!!
 
                     print("body() : ")
@@ -214,6 +215,21 @@ class EstimateActivity : AppCompatActivity() {
             }
         }
 
+
         return -1.0
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

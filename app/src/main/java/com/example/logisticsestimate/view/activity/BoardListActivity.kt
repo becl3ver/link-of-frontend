@@ -174,7 +174,7 @@ class BoardListActivity: AppCompatActivity() {
 
                         adapter.notifyItemRangeInserted(0, response.body()!!.boards.size)
 
-                        if(category != 0) {
+                        if(category != 0 && category != 10) {
                             initScrollListener()
                             isLoading = false
                         }

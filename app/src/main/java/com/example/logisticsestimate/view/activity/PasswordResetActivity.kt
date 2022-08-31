@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.logisticsestimate.R
@@ -23,14 +24,16 @@ import retrofit2.Response
 import java.util.*
 import kotlin.concurrent.timer
 
+/**
+ * 사용자가 패스워드를 망각한 경우, 이메일 인증을 통해서 패스워드를 수정할 수 있도록 함
+ */
 class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityPasswordResetBinding
-
-    private var isRunning = false
 
     private var authToken = ""
     private var submitToken: String? = null
     private var timer: Timer? = null
+    private var authCnt = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,6 +89,8 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
                     return
                 }
 
+                startTimer()
+
                 val call = AccountRetrofitClient.getInstance().identifyByEmail(EmailDto(email))
 
                 call.enqueue(object : Callback<EmailTokenDto> {
@@ -104,19 +109,17 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
+
+                            setButtonStateInverse(binding.activityPasswordResetBtnSend)
+                            setButtonStateInverse(binding.activityPasswordResetBtnCheck)
                         } else {
                             authToken = response.body()!!.token
-                            binding.activityPasswordResetBtnCheck.isEnabled = true
-                            binding.activityPasswordResetBtnCheck.background =
-                                ContextCompat.getDrawable(
-                                    this@PasswordResetActivity,
-                                    R.drawable.all_btn_round_edge
-                                )
-                            startTimer()
                         }
                     }
 
                     override fun onFailure(call: Call<EmailTokenDto>, t: Throwable) {
+                        setButtonStateInverse(binding.activityPasswordResetBtnSend)
+
                         Toast.makeText(
                             this@PasswordResetActivity,
                             "연결에 실패했습니다.",
@@ -129,42 +132,60 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
             }
 
             binding.activityPasswordResetBtnCheck.id -> {
-                val code = binding.activityPasswordResetEtCode.text.toString()
+                if(++authCnt == 5) {
+                    Toast.makeText(
+                        this@PasswordResetActivity,
+                        "인증번호 확인을 5회 실패하였습니다.\n 비밀번호 찾기를 다시 진행해주세요.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finish()
+                } else {
+                    val code = binding.activityPasswordResetEtCode.text.toString()
 
-                val call = AccountRetrofitClient.getInstance().identificationCode(authToken, CodeDto(code))
-                call.enqueue(object : Callback<EmailTokenDto> {
-                    override fun onResponse(
-                        call: Call<EmailTokenDto>,
-                        response: Response<EmailTokenDto>
-                    ) {
-                        if (!response.isSuccessful) {
+                    val call = AccountRetrofitClient.getInstance()
+                        .identificationCode(authToken, CodeDto(code))
+                    call.enqueue(object : Callback<EmailTokenDto> {
+                        override fun onResponse(
+                            call: Call<EmailTokenDto>,
+                            response: Response<EmailTokenDto>
+                        ) {
+                            if (!response.isSuccessful) {
+                                if(response.code() == 401) {
+                                    Toast.makeText(
+                                        this@PasswordResetActivity,
+                                        "인증코드가 일치하지 않습니다.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                } else {
+                                    Toast.makeText(
+                                        this@PasswordResetActivity,
+                                        "오류가 발생했습니다.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            } else {
+                                timer?.cancel()
+                                submitToken = response.body()!!.token
+
+                                binding.activityPasswordResetTvTimerMinute.text = ""
+                                binding.activityPasswordResetTvTimerSecond.text = "인증이 완료되었습니다."
+
+                                setButtonStateInverse(binding.activityPasswordResetBtnCheck)
+                                setButtonStateInverse(binding.activityPasswordResetBtnSubmit)
+                            }
+                        }
+
+                        override fun onFailure(call: Call<EmailTokenDto>, t: Throwable) {
                             Toast.makeText(
                                 this@PasswordResetActivity,
-                                "오류가 발생했습니다.",
+                                "연결에 실패했습니다.",
                                 Toast.LENGTH_SHORT
-                            ).show()
-                        } else {
-                            submitToken = response.body()!!.token
-
-                            binding.activityPasswordResetBtnSubmit.isEnabled = true
-                            binding.activityPasswordResetBtnSubmit.background =
-                                ContextCompat.getDrawable(
-                                    this@PasswordResetActivity,
-                                    R.drawable.all_btn_round_edge
-                                )
+                            )
+                                .show()
+                            Log.d("http", t.message ?: "onFailure")
                         }
-                    }
-
-                    override fun onFailure(call: Call<EmailTokenDto>, t: Throwable) {
-                        Toast.makeText(
-                            this@PasswordResetActivity,
-                            "연결에 실패했습니다.",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
-                        Log.d("http", t.message ?: "onFailure")
-                    }
-                })
+                    })
+                }
             }
 
             binding.activityPasswordResetBtnSubmit.id -> {
@@ -230,17 +251,10 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     private fun startTimer() {
-        if (isRunning) {
-            return
-        }
+        timer?.cancel()
 
-        binding.activityPasswordResetBtnSend.isEnabled = false
-        binding.activityPasswordResetBtnSend.background =
-            ContextCompat.getDrawable(this, R.drawable.all_btn_round_edge_disabled)
-        binding.activityPasswordResetBtnCheck.isEnabled = true
-        binding.activityPasswordResetBtnCheck.background =
-            ContextCompat.getDrawable(this, R.drawable.all_btn_round_edge)
-        isRunning = true
+        setButtonStateInverse(binding.activityPasswordResetBtnSend)
+        setButtonStateInverse(binding.activityPasswordResetBtnCheck)
 
         var time = 180
         timer = timer(period = 1000) {
@@ -256,16 +270,11 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
                 runOnUiThread {
                     binding.activityPasswordResetTvTimerMinute.text = ""
                     binding.activityPasswordResetTvTimerSecond.text = "시간이 만료되었습니다. 인증번호를 다시 발송해주세요."
-                    binding.activityPasswordResetBtnSend.isEnabled = true
-                    binding.activityPasswordResetBtnSend.background =
-                        ContextCompat.getDrawable(this@PasswordResetActivity, R.drawable.all_btn_round_edge)
-                    binding.activityPasswordResetBtnCheck.isEnabled = false
-                    binding.activityPasswordResetBtnCheck.background = ContextCompat.getDrawable(
-                        this@PasswordResetActivity,
-                        R.drawable.all_btn_round_edge_disabled
-                    )
+
+                    setButtonStateInverse(binding.activityPasswordResetBtnSend)
+                    setButtonStateInverse(binding.activityPasswordResetBtnCheck)
                 }
-                isRunning = false
+
                 this.cancel()
             }
 
@@ -277,5 +286,21 @@ class PasswordResetActivity: AppCompatActivity(), View.OnClickListener {
         val regex =
             "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[\$@\$!%*#?&])[A-Za-z\\d\$@\$!%*#?&]{8,16}\$".toRegex()
         return regex.matchEntire(str) != null
+    }
+
+    private fun setButtonStateInverse(button: Button) {
+        if(button.isEnabled) {
+            button.isEnabled = false
+            button.background = ContextCompat.getDrawable(
+                this@PasswordResetActivity,
+                R.drawable.all_btn_round_edge_disabled
+            )
+        } else {
+            button.isEnabled = true
+            button.background = ContextCompat.getDrawable(
+                this@PasswordResetActivity,
+                R.drawable.all_btn_round_edge
+            )
+        }
     }
 }

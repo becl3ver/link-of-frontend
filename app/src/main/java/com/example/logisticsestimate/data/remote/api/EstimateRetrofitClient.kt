@@ -8,6 +8,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * 견적 조회 레트로핏 객체 생성
+ */
 class EstimateRetrofitClient {
     companion object {
         var estimateService : EstimateService? = null

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_estimate_history_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/all_bottom_stroke"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/item_estimate_history_tv_annNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/input_annNum"
+        android:textSize="20sp"
+        android:textColor="@color/main_blue"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/item_estimate_history_tv_annRuteName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/input_annPortName"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_estimate_history_tv_annNum"/>
+    <TextView
+        android:id="@+id/item_estimate_history_tv_shippingPortName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/historyShippingPortName"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_estimate_history_tv_annRuteName"/>
+    <TextView
+        android:id="@+id/item_estimate_history_tv_landingPortName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/historyLandingPortName"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_estimate_history_tv_shippingPortName"/>
+    <TextView
+        android:id="@+id/item_estimate_history_tv_codPortName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/historyCodPortName"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_estimate_history_tv_landingPortName"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

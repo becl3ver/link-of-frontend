@@ -12,7 +12,7 @@ import retrofit2.http.POST
  */
 
 interface AccountService {
-    @POST("/auth/account/sign_up")
+    @POST("/email-auth/account/sign_up")
     fun signUp(@Header("Authorization") token: String, @Body accountRequestDto: AccountRequestDto): Call<AccountResponseDto>
 
     @POST("/account/authenticate")
@@ -25,7 +25,7 @@ interface AccountService {
     fun withdrawal(@Header("Authorization") token: String, @Body accountSignInDto: AccountSignInDto): Call<Boolean>
 
     @POST("/auth/account/update")
-    fun updateAccount(@Header("Authorization") token: String, @Body accountRequestDto: AccountRequestDto): Call<AccountResponseDto>
+    fun updateAccount(@Header("Authorization") token: String, @Body accountRequestDto: AccountRequestDto): Call<String>
 
     @POST("/account/email")
     fun checkEmail(@Body emailDto: EmailDto): Call<EmailTokenDto>
@@ -39,7 +39,7 @@ interface AccountService {
     @POST("/email-auth/account/password/email/code")
     fun identificationCode(@Header("Authorization") token: String, @Body codeDto: CodeDto): Call<EmailTokenDto>
 
-    @POST("/auth/password/reset")
+    @POST("/email-auth/password/reset")
     fun passwordReset(@Header("Authorization") token: String, @Body passwordDto: PasswordDto): Call<String>
 
 }

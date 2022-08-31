@@ -113,6 +113,7 @@ class PreferenceUtil(context: Context) {
         setUid(tokenDto.uid)
         setLoginId(tokenDto.id)
         setNickname(tokenDto.nickname)
+        setEmail(tokenDto.email)
         setAccessToken(tokenDto.token)
         setName(tokenDto.name)
     }
@@ -121,6 +122,7 @@ class PreferenceUtil(context: Context) {
         removeUid()
         removeLoginId()
         removeNickname()
+        removeEmail()
         removeAccessToken()
         removeName()
     }

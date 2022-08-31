@@ -4,6 +4,9 @@ import com.example.logisticsestimate.data.remote.model.exchange.ExchangeRateDto
 import retrofit2.Call
 import retrofit2.http.*
 
+/**
+ * 환율 정보 통신
+ */
 interface ExchangeService {
     @GET("/site/program/financial/exchangeJSON")
     fun getExchangeRate(

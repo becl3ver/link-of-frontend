@@ -55,8 +55,11 @@
                     android:id="@+id/fragment_my_page_tv_name_result"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:paddingStart="10dp"
+                    android:paddingStart="20dp"
                     android:layout_height="40dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:textSize="20sp"
                     android:background="@drawable/all_tv_round_edge"
                     app:layout_constraintTop_toBottomOf="@id/fragment_my_page_tv_name"
                     app:layout_constraintStart_toStartOf="parent"
@@ -79,8 +82,11 @@
                     android:id="@+id/fragment_my_page_tv_id_result"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:paddingStart="10dp"
+                    android:paddingStart="20dp"
                     android:layout_height="40dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:textSize="20sp"
                     android:background="@drawable/all_tv_round_edge"
                     app:layout_constraintTop_toBottomOf="@id/fragment_my_page_tv_id"
                     app:layout_constraintStart_toStartOf="parent"
@@ -103,15 +109,18 @@
                     android:id="@+id/fragment_my_page_tv_nickname_result"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:paddingStart="10dp"
+                    android:paddingStart="20dp"
                     android:layout_height="40dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:textSize="20sp"
                     android:background="@drawable/all_tv_round_edge"
                     app:layout_constraintTop_toBottomOf="@id/fragment_my_page_tv_nickname"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
-                    android:id="@+id/fragment_my_page_tv_mail"
+                    android:id="@+id/fragment_my_page_tv_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -124,13 +133,16 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
-                    android:id="@+id/fragment_my_page_tv_mail_result"
+                    android:id="@+id/fragment_my_page_tv_email_result"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:paddingStart="10dp"
+                    android:paddingStart="20dp"
                     android:layout_height="40dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:textSize="20sp"
                     android:background="@drawable/all_tv_round_edge"
-                    app:layout_constraintTop_toBottomOf="@id/fragment_my_page_tv_mail"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_my_page_tv_email"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -144,7 +156,7 @@
                     android:text="@string/change_info"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@+id/fragment_my_page_tv_mail_result"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_my_page_tv_email_result"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>

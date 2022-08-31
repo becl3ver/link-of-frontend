@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.logisticsestimate.R
@@ -25,16 +28,20 @@ import retrofit2.Response
  */
 class MyInfoActivity: AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMyInfoBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.activityMyInfoEtId.setText(App.prefs.getLoginId())
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.all_ic_arrow_back)
+        supportActionBar!!.title = getString(R.string.change_info)
+
         binding.activityMyInfoEtName.setText(App.prefs.getName())
         binding.activityMyInfoEtNickname.setText(App.prefs.getNickname())
 
-        binding.activityMyInfoBtnIdCheck.setOnClickListener(this)
+        binding.activityMyInfoBtnNicknameCheck.setOnClickListener(this)
         binding.activityMyInfoBtnSubmit.setOnClickListener(this)
         binding.activityMyInfoBtnCurrentPassword.setOnClickListener(this)
         binding.activityMyInfoTvBtnSubmitPassword.setOnClickListener(this)
@@ -71,83 +78,6 @@ class MyInfoActivity: AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         when(p0?.id) {
-            binding.activityMyInfoBtnIdCheck.id -> {
-                val id = binding.activityMyInfoEtId.text.toString()
-
-                val accountRequestDto = AccountRequestDto(id, "", "", "")
-                val call = AccountRetrofitClient.getInstance().checkDuplication(accountRequestDto)
-
-                call.enqueue(object: Callback<AccountResponseDto> {
-                    override fun onResponse(
-                        call: Call<AccountResponseDto>,
-                        response: Response<AccountResponseDto>
-                    ) {
-                        if (!response.isSuccessful) {
-                            Toast.makeText(this@MyInfoActivity, "오류가 발생했습니다.", Toast.LENGTH_SHORT)
-                                .show()
-                        } else {
-                            val str: String = when(response.body()?.result) {
-                                "id" -> "이미 사용 중인 ID입니다."
-                                "nickname" -> "이미 사용 중인 닉네임입니다."
-                                else -> {
-                                    binding.activityMyInfoBtnSubmit.isEnabled = true
-                                    binding.activityMyInfoBtnSubmit.background =
-                                        ContextCompat.getDrawable(
-                                            this@MyInfoActivity,
-                                            R.drawable.all_btn_round_edge
-                                        )
-                                    "사용 가능한 ID와 닉네임입니다."
-                                }
-                            }
-
-                            Toast.makeText(this@MyInfoActivity, str, Toast.LENGTH_SHORT).show()
-                        }
-                    }
-
-                    override fun onFailure(call: Call<AccountResponseDto>, t: Throwable) {
-                        Toast.makeText(this@MyInfoActivity, "연결에 실패했습니다.", Toast.LENGTH_SHORT)
-                            .show()
-                        Log.d("http", "onFailure : " + t.message)
-                    }
-                })
-            }
-
-            binding.activityMyInfoBtnSubmit.id -> {
-                val token = App.prefs.getAccessToken()
-
-                val id = binding.activityMyInfoEtId.text.toString()
-                val name = binding.activityMyInfoEtName.text.toString()
-                val nickname = binding.activityMyInfoEtNickname.text.toString()
-                val accountRequestDto = AccountRequestDto(id, name, null, nickname)
-
-                val call = AccountRetrofitClient.getInstance().updateAccount(token, accountRequestDto)
-
-                call.enqueue(object: Callback<AccountResponseDto> {
-                    override fun onResponse(
-                        call: Call<AccountResponseDto>,
-                        response: Response<AccountResponseDto>
-                    ) {
-                        if (!response.isSuccessful) {
-                            Toast.makeText(this@MyInfoActivity, "오류가 발생했습니다.", Toast.LENGTH_SHORT)
-                                .show()
-                        } else {
-                            Toast.makeText(this@MyInfoActivity, "변경이 완료되었습니다.", Toast.LENGTH_SHORT)
-                                .show()
-                            App.prefs.setLoginId(id)
-                            App.prefs.setName(name)
-                            App.prefs.setNickname(nickname)
-                            finish()
-                        }
-                    }
-
-                    override fun onFailure(call: Call<AccountResponseDto>, t: Throwable) {
-                        Toast.makeText(this@MyInfoActivity, "연결에 실패했습니다.", Toast.LENGTH_SHORT)
-                            .show()
-                        Log.d("http", "onFailure : " + t.message)
-                    }
-                })
-            }
-
             binding.activityMyInfoBtnCurrentPassword.id -> {
                 val id = App.prefs.getLoginId()
                 val password = binding.activityMyInfoEtCurrentPassword.text.toString()
@@ -173,18 +103,106 @@ class MyInfoActivity: AppCompatActivity(), View.OnClickListener {
                                     .show()
                             }
                         } else {
+                            Toast.makeText(
+                                this@MyInfoActivity,
+                                "확인이 완료되었습니다.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
                             App.prefs.removeLoginData()
                             App.prefs.setLoginData(response.body()!!)
-                            binding.activityMyInfoTvBtnSubmitPassword.isEnabled = true
-                            binding.activityMyInfoTvBtnSubmitPassword.background =
-                                ContextCompat.getDrawable(
-                                    this@MyInfoActivity,
-                                    R.drawable.all_btn_round_edge
-                                )
+                            binding.activityMyInfoEtCurrentPassword.isEnabled = false
+
+                            setButtonStateInverse(binding.activityMyInfoBtnCurrentPassword)
+                            setButtonStateInverse(binding.activityMyInfoTvBtnSubmitPassword)
                         }
                     }
 
                     override fun onFailure(call: Call<TokenDto>, t: Throwable) {
+                        Toast.makeText(this@MyInfoActivity, "연결에 실패했습니다.", Toast.LENGTH_SHORT)
+                            .show()
+                        Log.d("http", "onFailure : " + t.message)
+                    }
+                })
+            }
+
+            binding.activityMyInfoBtnNicknameCheck.id -> {
+                val nickname = binding.activityMyInfoEtNickname.text.toString()
+                if(nickname != App.prefs.getNickname()) {
+                    val accountRequestDto = AccountRequestDto("", "", "", nickname)
+                    val call =
+                        AccountRetrofitClient.getInstance().checkDuplication(accountRequestDto)
+
+                    call.enqueue(object : Callback<AccountResponseDto> {
+                        override fun onResponse(
+                            call: Call<AccountResponseDto>,
+                            response: Response<AccountResponseDto>
+                        ) {
+                            if (!response.isSuccessful) {
+                                Toast.makeText(
+                                    this@MyInfoActivity,
+                                    "오류가 발생했습니다.",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                            } else {
+                                val str: String = when (response.body()?.result) {
+                                    "nickname" -> "이미 사용 중인 닉네임입니다."
+                                    else -> {
+                                        binding.activityMyInfoEtNickname.isEnabled = false
+                                        setButtonStateInverse(binding.activityMyInfoBtnNicknameCheck)
+                                        setButtonStateInverse( binding.activityMyInfoBtnSubmit)
+                                        "사용 가능한 닉네임입니다."
+                                    }
+                                }
+
+                                Toast.makeText(this@MyInfoActivity, str, Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<AccountResponseDto>, t: Throwable) {
+                            Toast.makeText(this@MyInfoActivity, "연결에 실패했습니다.", Toast.LENGTH_SHORT)
+                                .show()
+                            Log.d("http", "onFailure : " + t.message)
+                        }
+                    })
+                } else {
+                    binding.activityMyInfoEtNickname.isEnabled = false
+                    setButtonStateInverse(binding.activityMyInfoBtnNicknameCheck)
+                    setButtonStateInverse(binding.activityMyInfoBtnSubmit)
+                }
+            }
+
+            binding.activityMyInfoBtnSubmit.id -> {
+                val token = App.prefs.getAccessToken()
+
+                val id = App.prefs.getLoginId()
+                val name = binding.activityMyInfoEtName.text.toString()
+                val password = binding.activityMyInfoEtCurrentPassword.text.toString()
+                val nickname = binding.activityMyInfoEtNickname.text.toString()
+                val accountRequestDto = AccountRequestDto(id, name, password, nickname)
+
+                val call = AccountRetrofitClient.getInstance().updateAccount(token, accountRequestDto)
+
+                call.enqueue(object: Callback<String> {
+                    override fun onResponse(
+                        call: Call<String>,
+                        response: Response<String>
+                    ) {
+                        if (!response.isSuccessful) {
+                            Toast.makeText(this@MyInfoActivity, "오류가 발생했습니다.", Toast.LENGTH_SHORT)
+                                .show()
+                        } else {
+                            Toast.makeText(this@MyInfoActivity, "변경이 완료되었습니다.", Toast.LENGTH_SHORT)
+                                .show()
+                            App.prefs.setLoginId(id)
+                            App.prefs.setName(name)
+                            App.prefs.setNickname(nickname)
+                            finish()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<String>, t: Throwable) {
                         Toast.makeText(this@MyInfoActivity, "연결에 실패했습니다.", Toast.LENGTH_SHORT)
                             .show()
                         Log.d("http", "onFailure : " + t.message)
@@ -202,29 +220,28 @@ class MyInfoActivity: AppCompatActivity(), View.OnClickListener {
                 val accountRequestDto = AccountRequestDto(id, name, password, nickname)
 
                 val call = AccountRetrofitClient.getInstance().updateAccount(token, accountRequestDto)
-                call.enqueue(object: Callback<AccountResponseDto> {
+                call.enqueue(object: Callback<String> {
                     override fun onResponse(
-                        call: Call<AccountResponseDto>,
-                        response: Response<AccountResponseDto>
+                        call: Call<String>,
+                        response: Response<String>
                     ) {
                         if(!response.isSuccessful) {
                             Toast.makeText(
                                 this@MyInfoActivity,
                                 "오류가 발생했습니다.",
                                 Toast.LENGTH_SHORT
-                            )
-                                .show()
+                            ).show()
                         } else {
                             Toast.makeText(
                                 this@MyInfoActivity,
                                 "변경이 완료되었습니다.",
                                 Toast.LENGTH_SHORT
-                            )
+                            ).show()
                             finish()
                         }
                     }
 
-                    override fun onFailure(call: Call<AccountResponseDto>, t: Throwable) {
+                    override fun onFailure(call: Call<String>, t: Throwable) {
                         Toast.makeText(this@MyInfoActivity, "연결에 실패했습니다.", Toast.LENGTH_SHORT)
                             .show()
                         Log.d("http", "onFailure : " + t.message)
@@ -238,5 +255,35 @@ class MyInfoActivity: AppCompatActivity(), View.OnClickListener {
         val regex =
             "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[\$@\$!%*#?&])[A-Za-z\\d\$@\$!%*#?&]{8,16}\$".toRegex()
         return regex.matchEntire(str) != null
+    }
+
+    private fun setButtonStateInverse(button: Button) {
+        if(button.isEnabled) {
+            button.isEnabled = false
+            button.background = ContextCompat.getDrawable(
+                this@MyInfoActivity,
+                R.drawable.all_btn_round_edge_disabled
+            )
+        } else {
+            button.isEnabled = true
+            button.background = ContextCompat.getDrawable(
+                this@MyInfoActivity,
+                R.drawable.all_btn_round_edge
+            )
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

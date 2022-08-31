@@ -8,6 +8,9 @@ import com.example.logisticsestimate.utils.FreightCBMCalculator
 import com.example.logisticsestimate.R
 import com.example.logisticsestimate.databinding.ActivityCbmBinding
 
+/**
+ * 사용자의 입력을 바탕으로 CBM 계산기 기능 수행
+ */
 class CBMActivity: AppCompatActivity() {
     private lateinit var binding: ActivityCbmBinding
 

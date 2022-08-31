@@ -6,6 +6,9 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 
+/**
+ * 견적 조회 결과 통신
+ */
 interface EstimateService {
     @POST("/api/post-api/request")
     fun requestEstimateResult(

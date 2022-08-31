@@ -57,7 +57,6 @@ class TemporaryRecyclerViewAdapter(
                             temporaryPostDao.delete(entity)
                         }.start()
 
-                        Log.d(TemporaryRecyclerViewAdapter::class.java.name, adapterPosition.toString())
                         entities.removeAt(adapterPosition)
                         notifyDataSetChanged()
                     }

@@ -14,9 +14,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.logisticsestimate.R
-import com.example.logisticsestimate.view.activity.ShipTrackingActivity
 import com.example.logisticsestimate.data.remote.model.traffic.ShipInfo
 import com.example.logisticsestimate.databinding.FragmentTrackingBinding
+import com.example.logisticsestimate.view.activity.ShipTrackingActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback

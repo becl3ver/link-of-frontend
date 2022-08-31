@@ -48,7 +48,7 @@
     <string name="mail">이메일</string>
     <string name="password_update">비밀번호 수정</string>
     <string name="name">이름</string>
-    <string name="change_submit">변경사항 저장</string>
+    <string name="change_submit">계정 변경사항 저장</string>
     <string name="current_password">현재 비밀번호</string>
 
     <!-- 용어 사전 -->
@@ -72,4 +72,47 @@
     <string name="hc_40">40HC</string>
     <string name="tier_1">1단적재</string>
     <string name="tier_2">2단적재</string>
+
+    <!--  견적  -->
+    <string name="input_annNum">공표 번호 입력</string>
+    <string name="input_annPortName">공표 항구명 입력</string>
+    <string name="input_shippingPortName">선적지 항구명 입력</string>
+    <string name="input_landingPortName">양하지 항구명 입력</string>
+    <string name="input_codPortName">양륙지 항구명 입력</string>
+    <string name="input_transshipmentYn">환적 여부 입력</string>
+    <string name="input_containerOwnSeName">컨테이너 소유 구분명 입력</string>
+    <string name="input_containerCndName">컨테이너 종류명 입력</string>
+    <string name="input_containerStdStndrdName">컨테이너 크기명 입력 (feet)</string>
+    <string name="input_freightName">화물 품목명 입력</string>
+    <string name="input_tnSpotSeName">운송 단위명 입력</string>
+
+    <!--  견적 결과  -->
+    <string name="totalCost">총 운임 비용</string>
+    <string name="cychgOf">운임 OF</string>
+    <string name="cychgBaf">운임 BAF</string>
+    <string name="cychgCaf">운임 CAF</string>
+    <string name="cychgLss">운임 LSS</string>
+    <string name="cychgEbs">운임 EBS</string>
+    <string name="cychgOthc">운임 OTHC </string>
+    <string name="cychgDthc">운임 DTHC</string>
+    <string name="cychgDf">서류 발급비</string>
+    <string name="cychgDo">화물 인도 지시서 요금</string>
+    <string name="cychgWaf">부두 사용료</string>
+    <string name="cychgSc">컨테이너 봉인료</string>
+    <string name="cychgEtc">운임 기타</string>
+
+    <!--  검색 기록  -->
+    <string name="estimateHistory">견적</string>
+    <string name="trackingHistory">추적</string>
+
+    <!--  견적 기록  -->
+    <string name="historyAnnNum">공표번호: </string>
+    <string name="historyAnnPortName">공표 항구명: </string>
+    <string name="historyShippingPortName">선적지 항구명: </string>
+    <string name="historyLandingPortName">양하지 항구명: </string>
+    <string name="historyCodPortName">양륙지 항구명: </string>
+
+    <!--  추적 기록  -->
+    <string name="historyCategory">분류</string>
+    <string name="historyContent">내용</string>
 </resources>

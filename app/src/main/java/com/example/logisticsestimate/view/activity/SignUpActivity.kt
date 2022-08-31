@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.logisticsestimate.R
@@ -28,8 +29,8 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
     private var isDuplicationChecked = false
     private var authToken = ""
     private var submitToken: String? = null
-    private var isRunning = false
     private var timer: Timer? = null
+    private var authCnt = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -126,12 +127,8 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
                                     isDuplicationChecked = true
                                     binding.activitySignUpEtId.isEnabled = false
                                     binding.activitySignUpEtNickname.isEnabled = false
-                                    binding.activitySignUpBtnIdCheck.isEnabled = false
-                                    binding.activitySignUpBtnIdCheck.background =
-                                        ContextCompat.getDrawable(
-                                            this@SignUpActivity,
-                                            R.drawable.all_btn_round_edge_disabled
-                                        )
+
+                                    setButtonStateInverse(binding.activitySignUpBtnIdCheck)
                                     "사용 가능한 ID와 닉네임입니다."
                                 }
                             }
@@ -149,7 +146,9 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
             }
 
             binding.activitySignUpBtnMailCheck.id -> {
+                binding.activitySignUpEtMailCode.setText("")
                 val email = binding.activitySignUpEtMail.text.toString()
+
                 if(email == "") {
                     Toast.makeText(this@SignUpActivity, "메일 주소를 입력해주세요", Toast.LENGTH_SHORT).show()
                     return
@@ -161,18 +160,21 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
                 call.enqueue(object: Callback<EmailTokenDto> {
                     override fun onResponse(call: Call<EmailTokenDto>, response: Response<EmailTokenDto>) {
                         if(!response.isSuccessful) {
-                            Toast.makeText(this@SignUpActivity, "오류가 발생했습니다", Toast.LENGTH_SHORT).show()
+                            if (response.code() != 500) {
+                                setButtonStateInverse(binding.activitySignUpBtnMailCheck)
+                                Toast.makeText(
+                                    this@SignUpActivity,
+                                    "오류가 발생했습니다",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         } else {
-                            authToken = "Bearer " + response.body()!!.token
-                            binding.activitySignUpBtnMailCheck.background = ContextCompat.getDrawable(
-                                this@SignUpActivity,
-                                R.drawable.all_btn_round_edge
-                            )
-                            binding.activitySignUpBtnMailCheck.isEnabled = true
+                            authToken = response.body()!!.token
                         }
                     }
 
                     override fun onFailure(call: Call<EmailTokenDto>, t: Throwable) {
+                        setButtonStateInverse(binding.activitySignUpBtnMailCheck)
                         Toast.makeText(this@SignUpActivity, "연결에 실패했습니다", Toast.LENGTH_SHORT).show()
                         Log.d("http", t.message ?: "onFailure")
                     }
@@ -180,33 +182,47 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
             }
 
             binding.activitySignUpBtnMailCodeCheck.id -> {
-                val code = binding.activitySignUpEtMailCode.text.toString()
-                val call = AccountRetrofitClient.getInstance().checkEmailCode(authToken, CodeDto(code))
+                if(++authCnt == 5) {
+                    Toast.makeText(
+                        this@SignUpActivity, "인증번호 확인을 5회 실패하였습니다.\n 가입을 다시 진행해주세요.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finish()
+                } else {
 
-                call.enqueue(object: Callback<EmailTokenDto> {
-                    override fun onResponse(call: Call<EmailTokenDto>, response: Response<EmailTokenDto>) {
-                        if(!response.isSuccessful) {
-                            Toast.makeText(this@SignUpActivity, "오류가 발생했습니다", Toast.LENGTH_SHORT).show()
-                        } else {
-                            submitToken = "Bearer " + response.body()!!.token
-                            binding.activitySignUpTvTimerMinute.text = ""
-                            binding.activitySignUpTvTimerSecond.text = "인증이 완료되었습니다."
-                            binding.activitySignUpBtnMailCodeCheck.isEnabled = false
-                            binding.activitySignUpBtnMailCodeCheck.background =
-                                ContextCompat.getDrawable(
+                    val code = binding.activitySignUpEtMailCode.text.toString()
+                    val call =
+                        AccountRetrofitClient.getInstance().checkEmailCode(authToken, CodeDto(code))
+
+                    call.enqueue(object : Callback<EmailTokenDto> {
+                        override fun onResponse(
+                            call: Call<EmailTokenDto>,
+                            response: Response<EmailTokenDto>
+                        ) {
+                            if (!response.isSuccessful) {
+                                Toast.makeText(
                                     this@SignUpActivity,
-                                    R.drawable.all_btn_round_edge_disabled
-                                )
-                            timer?.cancel()
-                            checkSubmitButton()
-                        }
-                    }
+                                    "오류가 발생했습니다",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                timer?.cancel()
+                                submitToken = response.body()!!.token
 
-                    override fun onFailure(call: Call<EmailTokenDto>, t: Throwable) {
-                        Toast.makeText(this@SignUpActivity, "연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
-                        Log.d("http", t.message ?: "onFailure")
-                    }
-                })
+                                binding.activitySignUpTvTimerMinute.text = ""
+                                binding.activitySignUpTvTimerSecond.text = "인증이 완료되었습니다."
+                                setButtonStateInverse(binding.activitySignUpBtnMailCodeCheck)
+                                checkSubmitButton()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<EmailTokenDto>, t: Throwable) {
+                            Toast.makeText(this@SignUpActivity, "연결에 실패했습니다.", Toast.LENGTH_SHORT)
+                                .show()
+                            Log.d("http", t.message ?: "onFailure")
+                        }
+                    })
+                }
             }
 
             binding.activitySignUpBtnSubmit.id -> {
@@ -260,17 +276,10 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     private fun startTimer() {
-        if (isRunning) {
-            return
-        }
+        timer?.cancel()
 
-        binding.activitySignUpBtnMailCheck.isEnabled = false
-        binding.activitySignUpBtnMailCheck.background =
-            ContextCompat.getDrawable(this, R.drawable.all_btn_round_edge_disabled)
-        binding.activitySignUpBtnMailCodeCheck.isEnabled = true
-        binding.activitySignUpBtnMailCodeCheck.background =
-            ContextCompat.getDrawable(this, R.drawable.all_btn_round_edge)
-        isRunning = true
+        setButtonStateInverse(binding.activitySignUpBtnMailCheck)
+        setButtonStateInverse(binding.activitySignUpBtnMailCodeCheck)
 
         var time = 180
         timer = timer(period = 1000) {
@@ -286,18 +295,9 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
                 runOnUiThread {
                     binding.activitySignUpTvTimerMinute.text = ""
                     binding.activitySignUpTvTimerSecond.text = "시간이 만료되었습니다. 인증번호를 다시 발송해주세요."
-                    binding.activitySignUpBtnMailCheck.isEnabled = true
-                    binding.activitySignUpBtnMailCheck.background = ContextCompat.getDrawable(
-                        this@SignUpActivity,
-                        R.drawable.all_btn_round_edge
-                    )
-                    binding.activitySignUpBtnMailCodeCheck.isEnabled = false
-                    binding.activitySignUpBtnMailCodeCheck.background = ContextCompat.getDrawable(
-                        this@SignUpActivity,
-                        R.drawable.all_btn_round_edge_disabled
-                    )
+                    setButtonStateInverse(binding.activitySignUpBtnMailCheck)
+                    setButtonStateInverse(binding.activitySignUpBtnMailCodeCheck)
                 }
-                isRunning = false
                 this.cancel()
             }
 
@@ -305,13 +305,25 @@ class SignUpActivity: AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun checkSubmitButton() {
-        if(isDuplicationChecked && submitToken != null) {
-            binding.activitySignUpBtnSubmit.background = ContextCompat.getDrawable(
+    private fun setButtonStateInverse(button: Button) {
+        if(button.isEnabled) {
+            button.isEnabled = false
+            button.background = ContextCompat.getDrawable(
+                this@SignUpActivity,
+                R.drawable.all_btn_round_edge_disabled
+            )
+        } else {
+            button.isEnabled = true
+            button.background = ContextCompat.getDrawable(
                 this@SignUpActivity,
                 R.drawable.all_btn_round_edge
             )
-            binding.activitySignUpBtnSubmit.isEnabled = true
+        }
+    }
+
+    private fun checkSubmitButton() {
+        if(isDuplicationChecked && submitToken != null) {
+            setButtonStateInverse(binding.activitySignUpBtnSubmit)
         }
     }
 

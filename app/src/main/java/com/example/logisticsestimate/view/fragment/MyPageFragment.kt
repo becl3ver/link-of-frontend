@@ -16,6 +16,7 @@ import com.example.logisticsestimate.view.activity.SignInActivity
 import com.example.logisticsestimate.base.App
 import com.example.logisticsestimate.base.MainActivity
 import com.example.logisticsestimate.databinding.FragmentMyPageBinding
+import com.example.logisticsestimate.view.activity.HistoryActivity
 import com.example.logisticsestimate.view.activity.MyInfoActivity
 
 /**
@@ -25,14 +26,6 @@ class MyPageFragment: Fragment() {
     private lateinit var mainActivity: MainActivity
     private var _binding: FragmentMyPageBinding? = null
     private val binding get() = _binding!!
-
-    private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result->
-        when(result.resultCode) {
-            RESULT_OK -> {
-                setBtnSignedIn()
-            }
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +40,7 @@ class MyPageFragment: Fragment() {
         }
 
         binding.fragmentMyPageBtnHistory.setOnClickListener {
-
+            startActivity(Intent(context, HistoryActivity::class.java))
         }
 
         binding.fragmentMyPageBtnUpdate.setOnClickListener {
@@ -55,6 +48,16 @@ class MyPageFragment: Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if(App.prefs.getAccessToken() == "") {
+            setBtnSignedOut()
+        } else {
+            setBtnSignedIn()
+        }
     }
 
     override fun onDestroyView() {
@@ -70,6 +73,11 @@ class MyPageFragment: Fragment() {
     private fun setBtnSignedIn() {
         binding.fragmentMyPageBtn.text = getString(R.string.sign_out)
         binding.fragmentMyPageContainer.visibility = View.VISIBLE
+
+        binding.fragmentMyPageTvNameResult.text = App.prefs.getName()
+        binding.fragmentMyPageTvIdResult.text = App.prefs.getLoginId()
+        binding.fragmentMyPageTvNicknameResult.text = App.prefs.getNickname()
+        binding.fragmentMyPageTvEmailResult.text = App.prefs.getEmail()
 
         binding.fragmentMyPageBtn.setOnClickListener {
             AlertDialog.Builder(requireActivity()).let {
@@ -96,7 +104,7 @@ class MyPageFragment: Fragment() {
 
         binding.fragmentMyPageBtn.setOnClickListener {
             val intent = Intent(context, SignInActivity::class.java)
-            getResult.launch(intent)
+            startActivity(intent)
         }
     }
 }

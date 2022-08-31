@@ -3,6 +3,9 @@ package com.example.logisticsestimate.utils
 import kotlin.math.ceil
 import kotlin.math.floor
 
+/**
+ * 입력받은 물체의 크기, 무게 정보를 바탕으로 CBM 및 컨테이너 수를 계산
+ */
 class FreightCBMCalculator(var length: Double, var width: Double, var height: Double, var weight: Double, var num: Int, var unit: Int) {
     private val MM = 0
     private val CM = 1

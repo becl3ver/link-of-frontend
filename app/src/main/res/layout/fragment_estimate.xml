@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.fragment.EstimateFragment">
+    tools:context=".view.fragment.EstimateFragment"
+
+    android:layout_marginBottom="10dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="공표 번호 입력"
+                android:text="@string/input_annNum"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -63,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="공표 항구명 입력"
+                android:text="@string/input_annPortName"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -105,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="선적지 항구명 입력"
+                android:text="@string/input_shippingPortName"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -150,7 +152,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="양하지 항구명 입력"
+                android:text="@string/input_landingPortName"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -193,7 +195,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="양륙지 항구명 입력"
+                android:text="@string/input_codPortName"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -236,7 +238,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="환적 여부 입력"
+                android:text="@string/input_transshipmentYn"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -251,7 +253,6 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:paddingStart="15dp"
                 android:background="@drawable/all_container_round_edge"
                 android:elevation="10dp"
                 android:orientation="vertical"
@@ -297,7 +298,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="컨테이너 소유 구분명 입력"
+                android:text="@string/input_containerOwnSeName"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -337,7 +338,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="컨테이너 종류명 입력"
+                android:text="@string/input_containerCndName"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -376,7 +377,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="컨테이너 크기명 입력 (feet)"
+                android:text="@string/input_containerStdStndrdName"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -419,7 +420,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="화물 품목명 입력"
+                android:text="@string/input_freightName"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -458,7 +459,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="운송 단위명 입력"
+                android:text="@string/input_tnSpotSeName"
 
                 android:textColor="?colorPrimary"
                 android:textStyle="bold"
@@ -495,19 +496,17 @@
                 android:id="@+id/fragment_estimate_btn_sumit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/all_btn_round_edge"
-                android:text="검색"
+                android:text="@string/search"
                 android:textColor="@color/white"
                 android:textSize="18sp"
 
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fragment_estimate_container11" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

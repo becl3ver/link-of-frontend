@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.logisticsestimate.databinding.ItemTermBinding
 import com.example.logisticsestimate.data.db.entity.TermEntity
 
+/**
+ * 용어 사전 목록 표시
+ */
 class TermRecyclerViewAdapter (
     private val entities: ArrayList<TermEntity>,
     val context: Context
